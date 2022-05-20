@@ -1,0 +1,9 @@
+package objects.data.enums;
+
+public enum CtIModelsAtr {
+    STATUS_ONLY,
+    DIRECT_WITH_NORMAL_SECURITY,
+    SBO_WITH_NORMAL_SECURITY,
+    DIRECT_WITH_ENHANCED_SECURITY,
+    SBO_WITH_ENHANCED_SECURITY
+}

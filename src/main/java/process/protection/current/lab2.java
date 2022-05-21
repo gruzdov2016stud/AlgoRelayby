@@ -131,7 +131,7 @@ public class lab2 {
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);
-        cswi.setOpOpn(ptoc1.getOp());
+        cswi.setOpOpn1(ptoc1.getOp());
         cswi.getPos().getCtIVal().setValue(true); // присвоение начальной команды на отключение
         cswi.getPos().getStVal().setValue(StVal.ON);// присвоение начального положения выключателя
 

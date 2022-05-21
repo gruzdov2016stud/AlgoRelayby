@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="" />
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ТНЗНП работает неправильно.Этап исправления">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +29,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -165,8 +175,17 @@
       <workItem from="1651131365974" duration="1900000" />
       <workItem from="1651133476101" duration="2487000" />
       <workItem from="1651488645303" duration="185000" />
-      <workItem from="1653018222394" duration="1511000" />
+      <workItem from="1653018222394" duration="2628000" />
+      <workItem from="1653121328100" duration="31953000" />
     </task>
+    <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
+      <created>1653042088254</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653042088254</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +194,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="9e4d3d03-c765-47bb-adcf-6117b995bc21">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -192,10 +236,68 @@
             </State>
           </value>
         </entry>
+        <entry key="b20bdcf5-b1b4-467e-8f28-152dfac0183e">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="bb42ae5a-0732-4288-a608-7f7addf8f541">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="9e4d3d03-c765-47bb-adcf-6117b995bc21" value="TOOL_WINDOW" />
+        <entry key="bb42ae5a-0732-4288-a608-7f7addf8f541" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ТНЗНП работает неправильно.Этап исправления" />
+    <option name="LAST_COMMIT_MESSAGE" value="ТНЗНП работает неправильно.Этап исправления" />
+  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="objects.data.typeData.Vector" memberName="ang" />

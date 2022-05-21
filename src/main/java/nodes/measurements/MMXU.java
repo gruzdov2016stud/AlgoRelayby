@@ -102,11 +102,11 @@ public class MMXU extends LN {
         fourierUc.process(instMagUc, PhV.getPhsC().getCVal());
         /*Расчет углов по фазам*/
         float angA = (float) Math.toRadians(
-                PhV.getPhsA().getInstCVal().getAng().getValue() - A.getPhsA().getInstCVal().getAng().getValue());
+                PhV.getPhsA().getCVal().getAng().getValue() - A.getPhsA().getCVal().getAng().getValue());
         float angB = (float) Math.toRadians(
-                PhV.getPhsB().getInstCVal().getAng().getValue() - A.getPhsB().getInstCVal().getAng().getValue());
+                PhV.getPhsB().getCVal().getAng().getValue() - A.getPhsB().getCVal().getAng().getValue());
         float angC = (float) Math.toRadians(
-                PhV.getPhsC().getInstCVal().getAng().getValue() - A.getPhsC().getInstCVal().getAng().getValue());
+                PhV.getPhsC().getCVal().getAng().getValue() - A.getPhsC().getCVal().getAng().getValue());
         /*Расчет cos и sin*/
         float cosPhiA = (float) Math.cos(angA);
         float sinPhiA = (float) Math.sin(angA);
@@ -117,23 +117,23 @@ public class MMXU extends LN {
         float cosPhi  = (cosPhiA + cosPhiB + cosPhiC) / 3;
         float sinPhi  = (sinPhiA + sinPhiB + sinPhiC) / 3;
         /*Расчет полной мощности*/
-        float SA = PhV.getPhsA().getInstCVal().getMag().getValue() * A.getPhsA().getInstCVal().getMag().getValue();
-        float SB = PhV.getPhsB().getInstCVal().getMag().getValue() * A.getPhsB().getInstCVal().getMag().getValue();
-        float SC = PhV.getPhsC().getInstCVal().getMag().getValue() * A.getPhsC().getInstCVal().getMag().getValue();
+        float SA = PhV.getPhsA().getCVal().getMag().getValue() * A.getPhsA().getCVal().getMag().getValue();
+        float SB = PhV.getPhsB().getCVal().getMag().getValue() * A.getPhsB().getCVal().getMag().getValue();
+        float SC = PhV.getPhsC().getCVal().getMag().getValue() * A.getPhsC().getCVal().getMag().getValue();
         float S  = SA + SB + SC;
-        VA.getPhsA().getInstCVal().getMag().setValue(SA);
-        VA.getPhsB().getInstCVal().getMag().setValue(SB);
-        VA.getPhsC().getInstCVal().getMag().setValue(SC);
+        VA.getPhsA().getCVal().getMag().setValue(SA);
+        VA.getPhsB().getCVal().getMag().setValue(SB);
+        VA.getPhsC().getCVal().getMag().setValue(SC);
         TotVA.getMag().getF().setValue(S);
         /*Расчет полной активной мощности*/
-        W.getPhsA().getInstCVal().getMag().setValue(SA * cosPhiA);
-        W.getPhsB().getInstCVal().getMag().setValue(SB * cosPhiB);
-        W.getPhsC().getInstCVal().getMag().setValue(SC * cosPhiC);
+        W.getPhsA().getCVal().getMag().setValue(SA * cosPhiA);
+        W.getPhsB().getCVal().getMag().setValue(SB * cosPhiB);
+        W.getPhsC().getCVal().getMag().setValue(SC * cosPhiC);
         TotW.getMag().getF().setValue(S * cosPhi);
         /*Расчет полной реактивной мощность*/
-        VAr.getPhsA().getInstCVal().getMag().setValue(SA * sinPhiA);
-        VAr.getPhsB().getInstCVal().getMag().setValue(SB * sinPhiB);
-        VAr.getPhsC().getInstCVal().getMag().setValue(SC * sinPhiC);
+        VAr.getPhsA().getCVal().getMag().setValue(SA * sinPhiA);
+        VAr.getPhsB().getCVal().getMag().setValue(SB * sinPhiB);
+        VAr.getPhsC().getCVal().getMag().setValue(SC * sinPhiC);
         TotVAr.getMag().getF().setValue(S * sinPhi);
     }
     // ================================================ Не используемые ================================================

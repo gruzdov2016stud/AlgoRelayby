@@ -100,9 +100,9 @@ public class PTOC extends LN {
         Str.getPhsC().setValue(phsC);
         Str.getGeneral().setValue(general);
 
-        if (Str.getPhsA().getValue()) breakerTimeA += 0.25;
-        if (Str.getPhsB().getValue()) breakerTimeB += 0.25;
-        if (Str.getPhsC().getValue()) breakerTimeC += 0.25;
+        if (Str.getPhsA().getValue()) breakerTimeA += 20.0/80; else breakerTimeA = 0 ;
+        if (Str.getPhsB().getValue()) breakerTimeB += 20.0/80; else breakerTimeB = 0 ;
+        if (Str.getPhsC().getValue()) breakerTimeC += 20.0/80; else breakerTimeC = 0 ;
 
 
 /**Условия проверки контролирования уставки направления защиты (направленной == 1, FORWARD | ненаправленная == 0, BACKWARD)*/
@@ -113,13 +113,16 @@ public class PTOC extends LN {
                 breakerTimeB = 0;
                 breakerTimeC = 0;
             }
-        } else {
-            if (Dir.getDirGeneral().getValue() == Direction.BACKWARD) {
-                breakerTimeA = 0;
-                breakerTimeB = 0;
-                breakerTimeC = 0;
-            }
         }
+//        else {
+//            if (Dir.getDirGeneral().getValue() == Direction.BACKWARD) {
+//                breakerTimeA = 0;
+//                breakerTimeB = 0;
+//                breakerTimeC = 0;
+//            }
+//        }
+
+
         /**Автоматическое ускорение*/
         if (automaticAccelearation.getCtIVal().getValue()) OpDLTmms.getSetVal().setValue(0);
 
@@ -127,13 +130,8 @@ public class PTOC extends LN {
         if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
         if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
         if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
-        /**Срабатывание защиты при достижение уставки по времени*/
-        if (Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue()) {
-            Op.getGeneral().setValue(true);
-//            breakerTimeA = 0;
-//            breakerTimeB = 0;
-//            breakerTimeC = 0;
-        }
+        Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
+
 
 //        /**Проверка качества сигнала и принятия решения о предотвращении сработки защиты*/
 //        setQuality(qualityIa = new Quality());

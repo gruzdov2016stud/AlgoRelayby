@@ -24,8 +24,18 @@ public class CSWI extends LN {
     ///////////////////////////////////////////////////////////////////////////
     // todo Входные параметры
     ///////////////////////////////////////////////////////////////////////////
-    /**Действие «Отключить выключатель» из main*/
+    /** Действие «Отключить выключатель»*/
     private ACT OpOpn = new ACT();
+    /**Действие «Отключить выключатель» от 1ст*/
+    private ACT OpOpn1 = new ACT();
+    /**Действие «Отключить выключатель» от 2ст*/
+    private ACT OpOpn2 = new ACT();
+    /**Действие «Отключить выключатель» от 3ст*/
+    private ACT OpOpn3 = new ACT();
+    /**Действие «Отключить выключатель» от 4ст*/
+    private ACT OpOpn4 = new ACT();
+    /**Действие «Отключить выключатель» от 5ст*/
+    private ACT OpOpn5 = new ACT();
     /**Действие «Включить выключатель» из main*/
     private ACT OpCls = new ACT();
     ///////////////////////////////////////////////////////////////////////////
@@ -44,14 +54,23 @@ public class CSWI extends LN {
     ///////////////////////////////////////////////////////////////////////////
     @Override
     public void process() {
+        //объединяем сигналы на отключение
+        if(     OpOpn1.getGeneral().getValue() ||
+                OpOpn2.getGeneral().getValue() ||
+                OpOpn3.getGeneral().getValue() ||
+                OpOpn4.getGeneral().getValue() ||
+                OpOpn5.getGeneral().getValue()){
+            OpOpn.getGeneral().setValue(true);
+        } else{
+            OpOpn.getGeneral().setValue(false);
+        }
         /**Если General из Op пуск на отключение - true - значит защита сработала, следовательно надо отключить
          * StVal() из Pos меняет своё положение на off и отправляет данные узлу XCBR на выключение
          * то CtIVal из Pos Определяет положение выключателя - false - значит выключен */
-        if(OpOpn.getGeneral().getValue() && StVal.ON == Pos.getStVal().getValue()){
+        if (OpOpn.getGeneral().getValue() && Pos.getStVal().getValue() == StVal.ON){
             Pos.getCtIVal().setValue(false);
             Pos.getStVal().setValue(StVal.OFF);
         }
-
     }
 
     // ================================================ Не используемые ================================================

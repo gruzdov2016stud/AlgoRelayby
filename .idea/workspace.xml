@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="PDIS. Не отрабатывает Op по-фазно">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/setStatus/SPG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +167,7 @@
       <workItem from="1651133476101" duration="2487000" />
       <workItem from="1651488645303" duration="185000" />
       <workItem from="1653018222394" duration="2628000" />
-      <workItem from="1653121328100" duration="54492000" />
+      <workItem from="1653121328100" duration="54891000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -195,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653284097499</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR">
+      <created>1653285188570</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653285188571</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +300,8 @@
     <MESSAGE value="ТНЗНП работает неправильно.Этап исправления" />
     <MESSAGE value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
     <MESSAGE value="PDIS. Не отрабатывает Op по-фазно" />
-    <option name="LAST_COMMIT_MESSAGE" value="PDIS. Не отрабатывает Op по-фазно" />
+    <MESSAGE value="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

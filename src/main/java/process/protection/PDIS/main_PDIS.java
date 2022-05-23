@@ -11,6 +11,7 @@ import nodes.measurements.MSQI;
 import nodes.measurements.utils.LSVC;
 import nodes.protection.PDIS;
 import nodes.protection.PTOC;
+import nodes.protection.PTRC;
 import nodes.registration.RDIR_PDIS;
 import nodes.registration.RPSB;
 import nodes.switchgear.XCBR;
@@ -127,19 +128,21 @@ public class main_PDIS {
         logicalNodes.add(pdis5ne);
         pdis5ne.setZ(mmxu.getZ());// присвоение сопротивления
         pdis5ne.getPoRch().getSetMag().getF().setValue(setpoint5);
-        pdis5ne.setStrColeb(rpsb.getStr());
         pdis5ne.setDir(rdir.getDir()); // передача направления мощности
         pdis5ne.getOpDLTmms().getSetVal().setValue(timeSet5); // выбор выдержки по времени
         pdis5ne.getDirMod().getSetVal().setValue(0); // выбор направленной защиты
-
+// ----------------------------------------------------todo Узел PTRC ptrc---------------------------------------------//
+        PTRC ptrc = new PTRC();
+        ptrc.getOp().add(pdis1.getOp());
+        ptrc.getOp().add(pdis2.getOp());
+        ptrc.getOp().add(pdis3.getOp());
+        ptrc.getOp().add(pdis4ne.getOp());
+        ptrc.getOp().add(pdis5ne.getOp());
+        ptrc.getOp().add(rpsb.getOp());
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);
-        cswi.setOpOpn1(pdis1.getOp());
-        cswi.setOpOpn2(pdis2.getOp());
-        cswi.setOpOpn3(pdis3.getOp());
-        cswi.setOpOpn4(pdis4ne.getOp());
-        cswi.setOpOpn5(pdis5ne.getOp());
+        cswi.setOpOpn(ptrc.getStr());
         cswi.getPos().getCtIVal().setValue(true); // присвоение начальной команды на отключение
         cswi.getPos().getStVal().setValue(StVal.ON);// присвоение начального положения выключателя
 

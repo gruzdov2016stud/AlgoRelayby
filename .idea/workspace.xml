@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/signals_mode/SCTR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/descriptionInfo/LPL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="PDIS. Не отрабатывает Op по-фазно">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/objects/setStatus/SPG.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/L1SVCF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/L1SVCF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/LSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/ParseQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/ParseQuality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/MTZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOC/MTZ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/lab2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/L1SVCF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/LSVC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/ParseQuality.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/RDIR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/registration/RDIR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/process/protection/current/ZeroSequenceProtection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/process/protection/current/lab2.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +49,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -191,7 +172,7 @@
       <workItem from="1651133476101" duration="2487000" />
       <workItem from="1651488645303" duration="185000" />
       <workItem from="1653018222394" duration="2628000" />
-      <workItem from="1653121328100" duration="53513000" />
+      <workItem from="1653121328100" duration="54492000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -207,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653168628074</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="PDIS. Не отрабатывает Op по-фазно">
+      <created>1653284097499</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653284097499</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +297,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ТНЗНП работает неправильно.Этап исправления" />
     <MESSAGE value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
-    <option name="LAST_COMMIT_MESSAGE" value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
+    <MESSAGE value="PDIS. Не отрабатывает Op по-фазно" />
+    <option name="LAST_COMMIT_MESSAGE" value="PDIS. Не отрабатывает Op по-фазно" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

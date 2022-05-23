@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import nodes.common.LN;
 import objects.data.DataAttribute;
+import objects.data.enums.Direction;
 import objects.info.ACD;
 import objects.measured.SEQ;
 import objects.measured.WYE;
@@ -31,9 +32,6 @@ public class RDIR_PDIS extends LN {
     private ASG MaxFwdAng = new ASG();
     ///////////////////////////////////////////////////////////////////////////
     // todo Реализация узла
-    // Если мощности нулевой последовательности PhsA,PhsB,PhsC больше нул, то Direction получается значение FORWARD, которое говорит
-    // о том, что ступень направленная
-    //
     ///////////////////////////////////////////////////////////////////////////
     /** Углы векторов сопротивлений */
     private float Aang;
@@ -46,21 +44,18 @@ public class RDIR_PDIS extends LN {
         Bang = Z.getPhsB().getCVal().getAng().getValue();
         Cang = Z.getPhsC().getCVal().getAng().getValue();
 
-        if (Aang < MaxFwdAng.getSetMag().getF().getValue() && Aang > MinFwdAng.getSetMag().getF().getValue()){
-            Dir.getPhsA().setValue(true); // Сопротивелние по фазе A входит в защищаемую зону
-        } else {
-            Dir.getPhsA().setValue(false);
-        }
-        if (Bang < MaxFwdAng.getSetMag().getF().getValue() && Bang > MinFwdAng.getSetMag().getF().getValue()){
-            Dir.getPhsB().setValue(true); // Сопротивелние по фазе B входит в защищаемую зону
-        } else {
-            Dir.getPhsB().setValue(false);
-        }
-        if (Cang < MaxFwdAng.getSetMag().getF().getValue() && Cang > MinFwdAng.getSetMag().getF().getValue()){
-            Dir.getPhsC().setValue(true); // Сопротивелние по фазе C входит в защищаемую зону
-        } else {
-            Dir.getPhsC().setValue(false);
-        }
+        Dir.getDirPhsA().setValue(
+                Aang < MaxFwdAng.getSetMag().getF().getValue() &&
+                Aang > MinFwdAng.getSetMag().getF().getValue() ?
+                        Direction.FORWARD : Direction.BACKWARD);
+        Dir.getDirPhsB().setValue(
+                Bang < MaxFwdAng.getSetMag().getF().getValue() &&
+                Bang > MinFwdAng.getSetMag().getF().getValue() ?
+                        Direction.FORWARD : Direction.BACKWARD);
+        Dir.getDirPhsC().setValue(
+                Cang < MaxFwdAng.getSetMag().getF().getValue() &&
+                Cang > MinFwdAng.getSetMag().getF().getValue() ?
+                        Direction.FORWARD : Direction.BACKWARD);
     }
 
     public void setArea(float leftAng, float rightAng) {

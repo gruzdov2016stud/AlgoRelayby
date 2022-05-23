@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Идея откотить логику PDIS к ЛР2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/Colebs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/ObertkaSin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,11 +68,11 @@
       <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="process.protection.PDIS" />
+      <recent name="nodes.protection" />
       <recent name="objects.descriptionInfo" />
       <recent name="nodes.controls.signals_mode" />
       <recent name="process.protection.distance" />
-      <recent name="objects.setStatus" />
-      <recent name="nodes.protection" />
     </key>
   </component>
   <component name="RunManager" selected="Application.main_PDIS">
@@ -167,7 +176,7 @@
       <workItem from="1651133476101" duration="2487000" />
       <workItem from="1651488645303" duration="185000" />
       <workItem from="1653018222394" duration="2628000" />
-      <workItem from="1653121328100" duration="54891000" />
+      <workItem from="1653121328100" duration="68848000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -197,7 +206,28 @@
       <option name="project" value="LOCAL" />
       <updated>1653285188571</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Добавлена логика PTRC">
+      <created>1653286971535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653286971535</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Добавлена логика PTRC">
+      <created>1653287032783</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653287032783</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Идея откотить логику PDIS к ЛР2">
+      <created>1653287415902</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653287415902</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +331,9 @@
     <MESSAGE value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
     <MESSAGE value="PDIS. Не отрабатывает Op по-фазно" />
     <MESSAGE value="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
-    <option name="LAST_COMMIT_MESSAGE" value="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
+    <MESSAGE value="Добавлена логика PTRC" />
+    <MESSAGE value="Идея откотить логику PDIS к ЛР2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Идея откотить логику PDIS к ЛР2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

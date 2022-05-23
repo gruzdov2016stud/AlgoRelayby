@@ -33,7 +33,7 @@ public class RPSB extends LN {
     ///////////////////////////////////////////////////////////////////////////
     @Override
     public void process() {
-        if (Math.abs(SeqA.getС2().getCVal().getMag().getValue()) < 0.4f){
+        if (Math.abs(SeqA.getС2().getCVal().getMag().getValue()) < 1000f){
             Op.getGeneral().setValue(true); // Колебания обнаружены, необходимо заблокировать защиту
         } else{
             Op.getGeneral().setValue(false); // Колебания не обнаружены

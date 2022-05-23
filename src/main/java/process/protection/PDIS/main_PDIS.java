@@ -25,8 +25,6 @@ import java.util.List;
 public class main_PDIS {
     private static ArrayList<LN> logicalNodes = new ArrayList<>();
     public static void main(String[] args) {
-        int sampleQuantity = 80;
-        int k = 1;
         float setpoint1 = 200f; // Радиус характеристики ДЗ первой ступени
         float setpoint2 = 250f; // Радиус характеристики ДЗ второй ступени
         float setpoint3 = 300f; // Радиус характеристики ДЗ третей ступени
@@ -34,14 +32,14 @@ public class main_PDIS {
         float setpoint5 = 400f; // Радиус характеристики ДЗ пятой ступени
 
         int timeSet1 = 100; // Задержка на срабатывание 1ой ступени
-        int timeSet2 = 500; // Задержка на срабатывание 2ой ступени
-        int timeSet3 = 900; // Задержка на срабатывание 3ей ступени
-        int timeSet4 = 1300; // Задержка на срабатывание 4ой ступени
-        int timeSet5 = 1700; // Задержка на срабатывание 5ой ступени
+        int timeSet2 = 400; // Задержка на срабатывание 2ой ступени
+        int timeSet3 = 600; // Задержка на срабатывание 3ей ступени
+        int timeSet4 = 400; // Задержка на срабатывание 4ой ступени
+        int timeSet5 = 600; // Задержка на срабатывание 5ой ступени
 
         // Зона чувствительности направленной ДЗ
         float LeftAng = 1.83f; //  1.83f   +15 градусов
-        float RightAng = -1.2f; // -1.2f   -5 градусов
+        float RightAng = -1.6f; // -1.2f   -5 градусов
 //----------------------------------------------------todo Узел LSVC lsvc---------------------------------------------//
         LSVC lsvc = new LSVC();
         logicalNodes.add(lsvc);
@@ -54,8 +52,12 @@ public class main_PDIS {
 //        String path = "src/main/resources/Опыты (с качеством)/KZ5";
         lsvc.readComtrade(path);
 //----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
-        NHMI nhmi = new NHMI();
-        logicalNodes.add(nhmi);
+        NHMI nhmi1 = new NHMI();
+        NHMI nhmi2 = new NHMI();
+        NHMI nhmi3 = new NHMI();
+        logicalNodes.add(nhmi1);
+//        logicalNodes.add(nhmi2);
+//        logicalNodes.add(nhmi3);
 //----------------------------------------------------todo Узел MMXU mmxu---------------------------------------------//
         /**Измерения*/
         MMXU mmxu = new MMXU();
@@ -82,9 +84,8 @@ public class main_PDIS {
         rdir.setArea(LeftAng, RightAng);
 //----------------------------------------------------todo Узел RPSB rpsb---------------------------------------------//
         RPSB rpsb = new RPSB();
-        logicalNodes.add(rdir);
+        logicalNodes.add(rpsb);
         rpsb.setSeqA(msqi.getSeqA());
-
 //----------------------------------------------------todo Узел PDIS pdis1--------------------------------------------//
         /**Первая ступень направленная*/
         PDIS pdis1 =new PDIS();
@@ -139,6 +140,8 @@ public class main_PDIS {
         ptrc.getOp().add(pdis4ne.getOp());
         ptrc.getOp().add(pdis5ne.getOp());
         ptrc.getOp().add(rpsb.getOp());
+        logicalNodes.add(ptrc);
+
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);
@@ -151,19 +154,15 @@ public class main_PDIS {
         logicalNodes.add(xcbr);
         xcbr.setPos(cswi.getPos());
 //----------------------------------------------------todo Отображение--------------------------------------------//
-        nhmi.addSignals("U", new NHMISignal("Ua", lsvc.getSignals().get(0).getInstMag().getF()),
+        nhmi1.addSignals("U", new NHMISignal("Ua", lsvc.getSignals().get(2).getInstMag().getF()),
                 new NHMISignal("Ub", lsvc.getSignals().get(1).getInstMag().getF()),
-                new NHMISignal("Uc", lsvc.getSignals().get(2).getInstMag().getF()));
-        nhmi.addSignals("I", new NHMISignal("Ia", lsvc.getSignals().get(3).getInstMag().getF()),
+                new NHMISignal("Uc", lsvc.getSignals().get(0).getInstMag().getF()));
+        nhmi1.addSignals("I", new NHMISignal("Ia", lsvc.getSignals().get(3).getInstMag().getF()),
                 new NHMISignal("Ib", lsvc.getSignals().get(4).getInstMag().getF()),
                 new NHMISignal("Ic", lsvc.getSignals().get(11).getInstMag().getF()));
-        nhmi.addSignals("CA", new NHMISignal("CA1", msqi.getSeqA().getС1().getInstCVal().getMag()),
-                new NHMISignal("CA2", msqi.getSeqA().getС2().getInstCVal().getMag()),
-                new NHMISignal("CA0", msqi.getSeqA().getС3().getInstCVal().getMag()));
-//        nhmi.addSignals("CV", new NHMISignal("CV1", msqi.getSeqV().getC1().getInstCVal().getMag().getF()),
-//                new NHMISignal("CV2", msqi.getSeqV().getC2().getInstCVal().getMag().getF()),
-//                new NHMISignal("CV0", msqi.getSeqV().getC3().getInstCVal().getMag().getF()));
-        nhmi.addSignals("Zmag", new NHMISignal("ZmagAB", mmxu.getZ().getPhsA().getCVal().getMag()),
+        nhmi1.addSignals(new NHMISignal("I2", msqi.getSeqA().getС2().getCVal().getMag()));
+        nhmi1.addSignals("Zmag",
+                new NHMISignal("ZmagAB", mmxu.getZ().getPhsA().getCVal().getMag()),
                 new NHMISignal("ZmagBC", mmxu.getZ().getPhsB().getCVal().getMag()),
                 new NHMISignal("ZmagCA", mmxu.getZ().getPhsC().getCVal().getMag()),
                 new NHMISignal("setpoint1", new DataAttribute<>(setpoint1)),
@@ -171,28 +170,29 @@ public class main_PDIS {
                 new NHMISignal("setpoint3", new DataAttribute<>(setpoint3)),
                 new NHMISignal("setpoint4", new DataAttribute<>(setpoint4)),
                 new NHMISignal("setpoint5", new DataAttribute<>(setpoint5)));
-        nhmi.addSignals("Zang", new NHMISignal("ZangAB", mmxu.getZ().getPhsA().getCVal().getMag()),
+        nhmi1.addSignals("Zang",
+                new NHMISignal("ZangAB", mmxu.getZ().getPhsA().getCVal().getMag()),
                 new NHMISignal("ZangBC", mmxu.getZ().getPhsB().getCVal().getMag()),
                 new NHMISignal("ZangCA", mmxu.getZ().getPhsC().getCVal().getMag()),
                 new NHMISignal("LeftAng", new DataAttribute<>(LeftAng)),
                 new NHMISignal("RightAng", new DataAttribute<>(RightAng)));
-//        nhmi.addSignals("P", new NHMISignal("P", mmxu.getTotW().getInstMag().getF()));
-//        nhmi.addSignals("Q", new NHMISignal("Q", mmxu.getTotVAr().getInstMag().getF()));
-//        nhmi.addSignals("PDIRA", new NHMISignal("PDIR2A", pdir2.getStr().getPhsA()));
-//        nhmi.addSignals("PDIRB", new NHMISignal("PDIR2B", pdir2.getStr().getPhsB()));
-//        nhmi.addSignals("PDIRC", new NHMISignal("PDIR2C", pdir2.getStr().getPhsC()));
-//        nhmi.addSignals("Op", new NHMISignal("Op1", pdis1.getOp().getGeneral()),
-//                new NHMISignal("Op2", pdis2.getOp().getGeneral()),
-//                new NHMISignal("Op3", pdis3.getOp().getGeneral()),
-//                new NHMISignal("Op4", pdis4.getOp().getGeneral()),
-//                new NHMISignal("Op5", pdis5.getOp().getGeneral()));
-        nhmi.addSignals("Op1", new NHMISignal("Op1", pdis1.getOp().getGeneral()));
-        nhmi.addSignals("Op2", new NHMISignal("Op2", pdis2.getOp().getGeneral()));
-        nhmi.addSignals("Op3", new NHMISignal("Op3", pdis3.getOp().getGeneral()));
-        nhmi.addSignals("Op4", new NHMISignal("Op4", pdis4ne.getOp().getGeneral()));
-        nhmi.addSignals("Op5", new NHMISignal("Op5", pdis5ne.getOp().getGeneral()));
-        nhmi.addSignals("SwitchMode", new NHMISignal("SwitchMode", xcbr.getPos().getCtIVal()));
-        nhmi.addSignals("Pos", new NHMISignal("Pos", cswi.getPos().getStVal()));
+        nhmi1.addSignals("<Блок>", new NHMISignal("", rpsb.getOp().getGeneral()));
+        nhmi1.addSignals("Op1", new NHMISignal("Op1", pdis1.getOp().getGeneral()));
+        nhmi1.addSignals("Op2", new NHMISignal("Op2", pdis2.getOp().getGeneral()));
+        nhmi1.addSignals("Op3", new NHMISignal("Op3", pdis3.getOp().getGeneral()));
+        nhmi1.addSignals("Op4", new NHMISignal("Op4", pdis4ne.getOp().getGeneral()));
+        nhmi1.addSignals("Op5", new NHMISignal("Op5", pdis5ne.getOp().getGeneral()));
+        nhmi1.addSignals(new NHMISignal("SwitchMode", xcbr.getPos().getCtIVal())); // сигнал состояния выключателя
+
+//        //симметрич составляющие
+//        nhmi3.addSignals(new NHMISignal("I1", msqi.getSeqA().getС1().getCVal().getMag()));
+//        nhmi3.addSignals(new NHMISignal("I2", msqi.getSeqA().getС2().getCVal().getMag()));
+//        nhmi3.addSignals(new NHMISignal("I0", msqi.getSeqA().getС3().getCVal().getMag()));
+//        // Направление мощности
+//        nhmi3.addSignals(new NHMISignal("Напр PА", rdir.getDir().getPhsA()));
+//        nhmi3.addSignals(new NHMISignal("Напр PB", rdir.getDir().getPhsB()));
+//        nhmi3.addSignals(new NHMISignal("Напр PC", rdir.getDir().getPhsC()));
+
 
         while (lsvc.hasNext()){
             logicalNodes.forEach(LN::process);

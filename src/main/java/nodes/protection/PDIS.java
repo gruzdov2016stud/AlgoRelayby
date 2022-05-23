@@ -66,7 +66,6 @@ public class PDIS extends LN {
     public void process() {
 
 
-        if (!StrColeb.getGeneral().getValue()) { //
             if (Z.getPhsA().getCVal().getMag().getValue() < PoRch.getSetMag().getF().getValue()) { // Проверка на фазу А
                 breakerTimeA += 20.0/80;
                 if (DirMod.getSetVal().getValue() == 1) { // Режим направленной защиты
@@ -113,7 +112,6 @@ public class PDIS extends LN {
                 breakerTimeC = 0;
                 activationC = false;
             }
-        }
 
         if (activationA | activationB | activationC) {
             if (tmms++ >= OpDLTmms.getSetVal().getValue()) { // Время срабатывания

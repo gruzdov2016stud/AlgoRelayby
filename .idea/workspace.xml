@@ -4,15 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ТНЗНП работает неправильно.Этап исправления">
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/signals_mode/SCTR.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/objects/descriptionInfo/LPL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/L1SVCF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/L1SVCF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/LSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/ParseQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/ParseQuality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/MTZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOC/MTZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/current/lab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/lab2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/L1SVCF.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/LSVC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/ParseQuality.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/registration/RDIR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/registration/RDIR.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/process/protection/current/ZeroSequenceProtection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/process/protection/current/lab2.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,33 +83,20 @@
       <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="process.protection.current" />
-      <recent name="nodes.registration" />
-      <recent name="objects.measured" />
-      <recent name="nodes.myNodes" />
-      <recent name="objects.data.enums" />
+      <recent name="objects.descriptionInfo" />
+      <recent name="nodes.controls.signals_mode" />
+      <recent name="process.protection.distance" />
+      <recent name="objects.setStatus" />
+      <recent name="nodes.protection" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ZeroSequenceProtection">
+  <component name="RunManager" selected="Application.main_PDIS">
     <configuration name="MTZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.protection.current.MTZ" />
       <module name="AlgoRelayby" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="process.protection.current.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NHMIexample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="nodes.gui.other.NHMIexample" />
-      <module name="AlgoRelayby" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nodes.gui.other.*" />
+          <option name="PATTERN" value="process.protection.PTOCdir.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,11 +105,11 @@
       </method>
     </configuration>
     <configuration name="ZeroSequenceProtection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="process.protection.current.ZeroSequenceProtection" />
+      <option name="MAIN_CLASS_NAME" value="process.protection.PTOCdir.ZeroSequenceProtection" />
       <module name="AlgoRelayby" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="process.protection.current.*" />
+          <option name="PATTERN" value="process.protection.PTOCdir.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,7 +135,20 @@
       <module name="AlgoRelayby" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nodes.registration.*" />
+          <option name="PATTERN" value="nodes.measurements.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main_PDIS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="process.protection.PDIS.main_PDIS" />
+      <module name="AlgoRelayby" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="process.protection.PDIS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.main_PDIS" />
         <item itemvalue="Application.ZeroSequenceProtection" />
         <item itemvalue="Application.main (1)" />
         <item itemvalue="Application.MTZ" />
         <item itemvalue="Application.main" />
-        <item itemvalue="Application.NHMIexample" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +191,7 @@
       <workItem from="1651133476101" duration="2487000" />
       <workItem from="1651488645303" duration="185000" />
       <workItem from="1653018222394" duration="2628000" />
-      <workItem from="1653121328100" duration="31953000" />
+      <workItem from="1653121328100" duration="53513000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -185,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653042088254</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался.">
+      <created>1653168628074</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653168628074</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,14 +308,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ТНЗНП работает неправильно.Этап исправления" />
-    <option name="LAST_COMMIT_MESSAGE" value="ТНЗНП работает неправильно.Этап исправления" />
+    <MESSAGE value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
+    <option name="LAST_COMMIT_MESSAGE" value="ТНЗНП работает. Осталось сделать так, чтобы выключатель не отключался." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/process/protection/current/ZeroSequenceProtection.java</url>
-          <line>88</line>
+          <url>file://$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java</url>
+          <line>86</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

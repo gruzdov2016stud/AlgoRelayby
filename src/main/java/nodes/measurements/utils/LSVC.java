@@ -1,4 +1,4 @@
-package nodes.registration;
+package nodes.measurements.utils;
 
 import lombok.Getter;
 import lombok.Setter;

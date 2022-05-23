@@ -83,6 +83,7 @@ public class MMXU extends LN {
     private Filter fourierIa = new Fourier();
     private Filter fourierIb = new Fourier();
     private Filter fourierIc = new Fourier();
+
     private Filter fourierUa = new Fourier();
     private Filter fourierUb = new Fourier();
     private Filter fourierUc = new Fourier();
@@ -107,6 +108,7 @@ public class MMXU extends LN {
                 PhV.getPhsB().getCVal().getAng().getValue() - A.getPhsB().getCVal().getAng().getValue());
         float angC = (float) Math.toRadians(
                 PhV.getPhsC().getCVal().getAng().getValue() - A.getPhsC().getCVal().getAng().getValue());
+
         /*Расчет cos и sin*/
         float cosPhiA = (float) Math.cos(angA);
         float sinPhiA = (float) Math.sin(angA);
@@ -116,6 +118,7 @@ public class MMXU extends LN {
         float sinPhiC = (float) Math.sin(angC);
         float cosPhi  = (cosPhiA + cosPhiB + cosPhiC) / 3;
         float sinPhi  = (sinPhiA + sinPhiB + sinPhiC) / 3;
+
         /*Расчет полной мощности*/
         float SA = PhV.getPhsA().getCVal().getMag().getValue() * A.getPhsA().getCVal().getMag().getValue();
         float SB = PhV.getPhsB().getCVal().getMag().getValue() * A.getPhsB().getCVal().getMag().getValue();
@@ -125,16 +128,38 @@ public class MMXU extends LN {
         VA.getPhsB().getCVal().getMag().setValue(SB);
         VA.getPhsC().getCVal().getMag().setValue(SC);
         TotVA.getMag().getF().setValue(S);
+
         /*Расчет полной активной мощности*/
         W.getPhsA().getCVal().getMag().setValue(SA * cosPhiA);
         W.getPhsB().getCVal().getMag().setValue(SB * cosPhiB);
         W.getPhsC().getCVal().getMag().setValue(SC * cosPhiC);
         TotW.getMag().getF().setValue(S * cosPhi);
+
         /*Расчет полной реактивной мощность*/
         VAr.getPhsA().getCVal().getMag().setValue(SA * sinPhiA);
         VAr.getPhsB().getCVal().getMag().setValue(SB * sinPhiB);
         VAr.getPhsC().getCVal().getMag().setValue(SC * sinPhiC);
         TotVAr.getMag().getF().setValue(S * sinPhi);
+
+        /*-----------------------------------------------ЛР№3--------------------------------------------------------*/
+        /*расчет линейных напряжений*/
+        float UabX = PhV.getPhsA().getCVal().getOrtX().getValue() - PhV.getPhsB().getCVal().getOrtX().getValue();
+        float UabY = PhV.getPhsA().getCVal().getOrtY().getValue() - PhV.getPhsB().getCVal().getOrtY().getValue();
+        float UbcX = PhV.getPhsB().getCVal().getOrtX().getValue() - PhV.getPhsC().getCVal().getOrtX().getValue();
+        float UbcY = PhV.getPhsB().getCVal().getOrtY().getValue() - PhV.getPhsC().getCVal().getOrtY().getValue();
+        float UcaX = PhV.getPhsC().getCVal().getOrtX().getValue() - PhV.getPhsA().getCVal().getOrtX().getValue();
+        float UcaY = PhV.getPhsC().getCVal().getOrtY().getValue() - PhV.getPhsA().getCVal().getOrtY().getValue();
+        PPV.getPhsAB().getCVal().setValueO(UabX, UabY);
+        PPV.getPhsBC().getCVal().setValueO(UbcX, UbcY);
+        PPV.getPhsCA().getCVal().setValueO(UcaX, UcaY);
+
+        /*расчет сопротивлений*/
+        float Za = PhV.getPhsA().getCVal().getMag().getValue() / A.getPhsA().getCVal().getMag().getValue();
+        float Zb = PhV.getPhsB().getCVal().getMag().getValue() / A.getPhsB().getCVal().getMag().getValue();
+        float Zc = PhV.getPhsC().getCVal().getMag().getValue() / A.getPhsC().getCVal().getMag().getValue();
+        Z.getPhsA().getCVal().setValue(Za, angA);
+        Z.getPhsB().getCVal().setValue(Zb, angB);
+        Z.getPhsC().getCVal().setValue(Zc, angC);
     }
     // ================================================ Не используемые ================================================
     // todo Информация об общих логических узлах

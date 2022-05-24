@@ -23,11 +23,11 @@ public class ZeroSequenceProtection {
         LSVC lsvc = new LSVC();
         logicalNodes.add(lsvc);
         /**
-         * Вперед KZ4 KZ3 - 1 ступень KZ2
+         *  KZ4 KZ3 - 1 ступень KZ2
          *
-         * Назад KZ7 KZ6 KZ5 KZ1
+         *  KZ7 KZ6 KZ5 KZ1
          */
-        String path = "src/main/resources/Опыты/KZ7";
+        String path = "src/main/resources/Опыты/KZ4";
 //        String path = "src/main/resources/Опыты (с качеством)/KZ5";
         lsvc.readComtrade(path);
 //----------------------------------------------------todo Узел ParseQuality pq---------------------------------------//
@@ -123,7 +123,7 @@ public class ZeroSequenceProtection {
         ptoc1NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc1NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc1NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc1NE.getStrVal().getSetMag().getF().setValue(1000f);;// выбор уставки 1 кА
+        ptoc1NE.getStrVal().getSetMag().getF().setValue(100f);;// выбор уставки 1 кА
         ptoc1NE.getOpDLTmms().getSetVal().setValue(100); // выбор выдержки по времени
         ptoc1NE.setDir(rdir.getDir()); // передача направления мощности
         ptoc1NE.getDirMod().getSetVal().setValue(0); // выбор ненаправленная защиты
@@ -135,7 +135,7 @@ public class ZeroSequenceProtection {
         ptoc2NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc2NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc2NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc2NE.getStrVal().getSetMag().getF().setValue(1000f);;// выбор уставки 1 кА
+        ptoc2NE.getStrVal().getSetMag().getF().setValue(100f);;// выбор уставки 1 кА
         ptoc2NE.getOpDLTmms().getSetVal().setValue(500); // выбор выдержки по времени
         ptoc2NE.setDir(rdir.getDir()); // передача направления мощности
         ptoc2NE.getDirMod().getSetVal().setValue(0); // выбор направленной защиты

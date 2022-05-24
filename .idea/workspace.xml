@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Идея откотить логику PDIS к ЛР2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/Colebs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/ObertkaSin.java" afterDir="false" />
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Защита работает верно, направленность ver2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -75,7 +74,7 @@
       <recent name="process.protection.distance" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main_PDIS">
+  <component name="RunManager" selected="Application.ZeroSequenceProtection">
     <configuration name="MTZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.protection.current.MTZ" />
       <module name="AlgoRelayby" />
@@ -143,8 +142,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main_PDIS" />
         <item itemvalue="Application.ZeroSequenceProtection" />
+        <item itemvalue="Application.main_PDIS" />
         <item itemvalue="Application.main (1)" />
         <item itemvalue="Application.MTZ" />
         <item itemvalue="Application.main" />
@@ -336,15 +335,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Идея откотить логику PDIS к ЛР2" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="objects.data.typeData.Vector" memberName="ang" />

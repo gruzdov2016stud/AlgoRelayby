@@ -112,7 +112,17 @@ public class PTOC extends LN {
                 breakerTimeA = 0;
                 breakerTimeB = 0;
                 breakerTimeC = 0;
+            }else{
+
+//                breakerTimeA += 20.0/80;
+//                breakerTimeB += 20.0/80;
+//                breakerTimeC += 20.0/80;
             }
+            /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
+            if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
+            if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
+            if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
+            Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
         }
 //        else {
 //            if (Dir.getDirGeneral().getValue() == Direction.BACKWARD) {
@@ -126,11 +136,6 @@ public class PTOC extends LN {
         /**Автоматическое ускорение*/
         if (automaticAccelearation.getCtIVal().getValue()) OpDLTmms.getSetVal().setValue(0);
 
-        /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
-        if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
-        if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
-        if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
-        Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
 
 
 //        /**Проверка качества сигнала и принятия решения о предотвращении сработки защиты*/

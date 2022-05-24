@@ -58,15 +58,15 @@ public class CSWI extends LN {
     @Override
     public void process() {
         //объединяем сигналы на отключениe. Используется в ЛР2, при запуске раскомментировать
-//        if(     OpOpn1.getGeneral().getValue() ||
-//                OpOpn2.getGeneral().getValue() ||
-//                OpOpn3.getGeneral().getValue() ||
-//                OpOpn4.getGeneral().getValue() ||
-//                OpOpn5.getGeneral().getValue()){
-//            OpOpn.getGeneral().setValue(true);
-//        } else{
-//            OpOpn.getGeneral().setValue(false);
-//        }
+        if(     OpOpn1.getGeneral().getValue() ||
+                OpOpn2.getGeneral().getValue() ||
+                OpOpn3.getGeneral().getValue() ||
+                OpOpn4.getGeneral().getValue() ||
+                OpOpn5.getGeneral().getValue()){
+            OpOpn.getGeneral().setValue(true);
+        } else{
+            OpOpn.getGeneral().setValue(false);
+        }
         /**Если General из Op пуск на отключение - true - значит защита сработала, следовательно надо отключить
          * StVal() из Pos меняет своё положение на off и отправляет данные узлу XCBR на выключение
          * то CtIVal из Pos Определяет положение выключателя - false - значит выключен */

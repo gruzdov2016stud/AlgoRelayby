@@ -3,6 +3,7 @@ package process;
 import objects.data.enums.SeqT;
 import objects.data.enums.Validity;
 import objects.data.typeData.Quality;
+import objects.info.ACT;
 import objects.measured.SEQ;
 
 public class main {
@@ -23,6 +24,12 @@ public class main {
 //            stringBinaryValue = binaryValue.split("");
 //            System.out.println(stringBinaryValue);
 //        }
+        int count = 0;
+        boolean trip = false;
+        for (int signal : new int[]{1, 2, 3, 4, 5,6}) {
+            count++;
+            System.out.println(count);
+        }
 
 
     }

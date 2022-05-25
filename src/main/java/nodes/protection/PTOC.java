@@ -112,11 +112,6 @@ public class PTOC extends LN {
                 breakerTimeA = 0;
                 breakerTimeB = 0;
                 breakerTimeC = 0;
-            }else{
-
-//                breakerTimeA += 20.0/80;
-//                breakerTimeB += 20.0/80;
-//                breakerTimeC += 20.0/80;
             }
             /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
             if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);

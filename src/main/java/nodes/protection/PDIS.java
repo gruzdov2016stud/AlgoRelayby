@@ -95,56 +95,73 @@ public class PDIS extends LN {
         if (Str.getPhsC().getValue()) breakerTimeC += 20.0 / 80;
         else breakerTimeC = 0;
 
-        /*Фаза A*/
-        if (DirMod.getSetVal().getValue() == 0) { // Режим направленной защиты
-            if (Dir.getDirPhsA().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
-//                Op.getPhsA().setValue(true);
-                breakerTimeA += 20.0 / 80;
-            } else { // Не входит в защищаемую зону
-//                Op.getPhsA().setValue(false);
+//        /*Фаза A*/
+//        if (DirMod.getSetVal().getValue() == 1) { // Режим направленной защиты
+//            if (Dir.getDirPhsA().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
+////                Op.getPhsA().setValue(true);
+//                breakerTimeA += 20.0 / 80;
+//            } else { // Не входит в защищаемую зону
+////                Op.getPhsA().setValue(false);
+//                breakerTimeA = 0;
+//            }
+//        } else { // Режим ненаправленной защиты
+//            breakerTimeA += 20.0 / 80;
+////            Op.getPhsA().setValue(true);
+//        }
+//        /*Фаза B*/
+//        if (DirMod.getSetVal().getValue() == 1) { // Режим направленной защиты
+//            if (Dir.getDirPhsB().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
+//                breakerTimeB += 20.0 / 80;
+//            } else { // Не входит в защищаемую зону
+//                breakerTimeB = 0;
+//            }
+//        } else { // Режим ненаправленной защиты
+//            breakerTimeB += 20.0 / 80;
+//        }
+//        /*Фаза C*/
+//        if (DirMod.getSetVal().getValue() == 1) { // Режим направленной защиты
+//            if (Dir.getDirPhsC().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
+//                breakerTimeC += 20.0 / 80;
+//            } else { // Не входит в защищаемую зону
+//                breakerTimeC = 0;
+//            }
+//        } else { // Режим ненаправленной защиты
+//            breakerTimeC += 20.0 / 80;
+//        }
+//
+//        /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
+//        if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
+//        if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
+//        if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
+//        if (Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue()) {
+//            Op.getGeneral().setValue(true);
+//            breakerTimeA = 0;
+//            breakerTimeB = 0;
+//            breakerTimeC = 0;
+//        }
+
+//        else {
+//            Op.getGeneral().setValue(false);
+//        }
+
+        if (DirMod.getSetVal().getValue() == 1) {
+            /**Если направление "за спину"*/
+            if (Dir.getDirPhsA().getValue() == Direction.FORWARD) {
                 breakerTimeA = 0;
             }
-        } else { // Режим ненаправленной защиты
-            breakerTimeA += 20.0 / 80;
-//            Op.getPhsA().setValue(true);
-        }
-        /*Фаза B*/
-        if (DirMod.getSetVal().getValue() == 0) { // Режим направленной защиты
-            if (Dir.getDirPhsB().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
-//                Op.getPhsB().setValue(true);
-                breakerTimeB += 20.0 / 80;
-            } else { // Не входит в защищаемую зону
-//                Op.getPhsB().setValue(false);
+            if (Dir.getDirPhsB().getValue() == Direction.FORWARD) {
                 breakerTimeB = 0;
             }
-        } else { // Режим ненаправленной защиты
-//            Op.getPhsB().setValue(true);
-            breakerTimeB += 20.0 / 80;
-        }
-        /*Фаза C*/
-        if (DirMod.getSetVal().getValue() == 0) { // Режим направленной защиты
-            if (Dir.getDirPhsC().getValue() == Direction.FORWARD) { // Входит в защищаемую зону
-//                Op.getPhsC().setValue(true);
-                breakerTimeC += 20.0 / 80;
-            } else { // Не входит в защищаемую зону
-//                Op.getPhsC().setValue(false);
+            if (Dir.getDirPhsC().getValue() == Direction.FORWARD) {
                 breakerTimeC = 0;
             }
-        } else { // Режим ненаправленной защиты
-//            Op.getPhsC().setValue(true);
-            breakerTimeC += 20.0 / 80;
+            /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
+            if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
+            if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
+            if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
+            Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
         }
-
-        /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
-        if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
-        if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
-        if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
-        if (Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue()) {
-            Op.getGeneral().setValue(true);
-            breakerTimeA = 0;
-            breakerTimeB = 0;
-            breakerTimeC = 0;
-        } else {
+        else{
             Op.getGeneral().setValue(false);
         }
 

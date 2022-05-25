@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Защита работает верно, направленность ver2">
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Защита ТНЗНП работает верно.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTRC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTRC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RDIR_PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/RPSB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/process/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/process/main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +35,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,7 +88,7 @@
       <recent name="process.protection.distance" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ZeroSequenceProtection">
+  <component name="RunManager" selected="Application.main_PDIS">
     <configuration name="MTZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.protection.current.MTZ" />
       <module name="AlgoRelayby" />
@@ -142,9 +156,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ZeroSequenceProtection" />
         <item itemvalue="Application.main_PDIS" />
         <item itemvalue="Application.main (1)" />
+        <item itemvalue="Application.ZeroSequenceProtection" />
         <item itemvalue="Application.MTZ" />
         <item itemvalue="Application.main" />
       </list>
@@ -176,6 +190,8 @@
       <workItem from="1651488645303" duration="185000" />
       <workItem from="1653018222394" duration="2628000" />
       <workItem from="1653121328100" duration="68848000" />
+      <workItem from="1653368931149" duration="2495000" />
+      <workItem from="1653377520957" duration="7102000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -226,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653287415902</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Защита ТНЗНП работает верно.">
+      <created>1653363271214</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653363271214</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +355,8 @@
     <MESSAGE value="PDIS. Не отрабатывает Op по-фазно PDIS и RDIR" />
     <MESSAGE value="Добавлена логика PTRC" />
     <MESSAGE value="Идея откотить логику PDIS к ЛР2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Идея откотить логику PDIS к ЛР2" />
+    <MESSAGE value="Защита ТНЗНП работает верно." />
+    <option name="LAST_COMMIT_MESSAGE" value="Защита ТНЗНП работает верно." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -341,5 +365,11 @@
         <PinnedItemInfo parentTag="objects.measured.WYE" memberName="presence" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((DataAttribute)((ACD)((PTOC)this).Dir).dirGeneral).value" custom="objects.info.ACD,objects.data.DataAttribute,nodes.protection.PTOC" />
+        <watch expression="((DataAttribute)((ING)((PTOC)this).DirMod).setVal).value" custom="objects.data.DataAttribute,nodes.protection.PTOC,objects.setStatus.ING" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

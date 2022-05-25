@@ -43,19 +43,20 @@ public class RDIR_PDIS extends LN {
         Aang = Z.getPhsA().getCVal().getAng().getValue();
         Bang = Z.getPhsB().getCVal().getAng().getValue();
         Cang = Z.getPhsC().getCVal().getAng().getValue();
+        System.out.println(Aang+" "+Bang+" "+Cang);
 
         Dir.getDirPhsA().setValue(
                 Aang < MaxFwdAng.getSetMag().getF().getValue() &&
                 Aang > MinFwdAng.getSetMag().getF().getValue() ?
-                        Direction.FORWARD : Direction.BACKWARD);
+                        Direction.BACKWARD : Direction.FORWARD); /*Сопротивление по фазе A входит в защищаемую зону*/
         Dir.getDirPhsB().setValue(
                 Bang < MaxFwdAng.getSetMag().getF().getValue() &&
                 Bang > MinFwdAng.getSetMag().getF().getValue() ?
-                        Direction.FORWARD : Direction.BACKWARD);
+                        Direction.BACKWARD : Direction.FORWARD);/*Сопротивление по фазе B входит в защищаемую зону*/
         Dir.getDirPhsC().setValue(
                 Cang < MaxFwdAng.getSetMag().getF().getValue() &&
                 Cang > MinFwdAng.getSetMag().getF().getValue() ?
-                        Direction.FORWARD : Direction.BACKWARD);
+                        Direction.BACKWARD : Direction.FORWARD);/*Сопротивление по фазе C входит в защищаемую зону*/
     }
 
     public void setArea(float leftAng, float rightAng) {

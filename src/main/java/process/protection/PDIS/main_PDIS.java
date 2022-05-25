@@ -37,18 +37,19 @@ public class main_PDIS {
         int timeSet4 = 400; // Задержка на срабатывание 4ой ступени
         int timeSet5 = 600; // Задержка на срабатывание 5ой ступени
 
-        // Зона чувствительности направленной ДЗ
-        float LeftAng = 1.83f; //  1.83f   +15 градусов
-        float RightAng = -1.6f; // -1.2f   -5 градусов
+        // Зона чувствительности направленной ДЗ KZ4 еще и ненаправленные
+        /*Зона чувствительности ненаправленной ДЗ KZ7 отрабатывает верно*/
+        float LeftAng = 85f; //  1.83f
+        float RightAng = -16f; // -1.2f
 //----------------------------------------------------todo Узел LSVC lsvc---------------------------------------------//
         LSVC lsvc = new LSVC();
         logicalNodes.add(lsvc);
         /**
-         * Вперед KZ4 KZ3 - 1 ступень KZ2
+         *  KZ4 KZ3 - 1 ступень KZ2
          *
-         * Назад KZ7 KZ6 KZ5 KZ1
+         *  KZ7 KZ6 KZ5 KZ1
          */
-        String path = "src/main/resources/Опыты/KZ5";
+        String path = "src/main/resources/Опыты/KZ4";
 //        String path = "src/main/resources/Опыты (с качеством)/KZ5";
         lsvc.readComtrade(path);
 //----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
@@ -183,7 +184,11 @@ public class main_PDIS {
         nhmi1.addSignals("Op4", new NHMISignal("Op4", pdis4ne.getOp().getGeneral()));
         nhmi1.addSignals("Op5", new NHMISignal("Op5", pdis5ne.getOp().getGeneral()));
         nhmi1.addSignals(new NHMISignal("SwitchMode", xcbr.getPos().getCtIVal())); // сигнал состояния выключателя
-
+//        nhmi2.addSignals("Str1", new NHMISignal("Str1", pdis1.getStr().getGeneral()));
+//        nhmi2.addSignals("Str2", new NHMISignal("Str2", pdis2.getStr().getGeneral()));
+//        nhmi2.addSignals("Str3", new NHMISignal("Str3", pdis3.getStr().getGeneral()));
+//        nhmi2.addSignals("Str4", new NHMISignal("Str4", pdis4ne.getStr().getGeneral()));
+//        nhmi2.addSignals("Str5", new NHMISignal("Str5", pdis5ne.getStr().getGeneral()));
 //        //симметрич составляющие
 //        nhmi3.addSignals(new NHMISignal("I1", msqi.getSeqA().getС1().getCVal().getMag()));
 //        nhmi3.addSignals(new NHMISignal("I2", msqi.getSeqA().getС2().getCVal().getMag()));
@@ -196,12 +201,13 @@ public class main_PDIS {
 
         while (lsvc.hasNext()){
             logicalNodes.forEach(LN::process);
-            System.out.println("Сигнал тока фазы А: "+lsvc.getSignals().get(3).getInstMag().getF().getValue());
-            System.out.println("Сигнал тока фазы В: "+lsvc.getSignals().get(4).getInstMag().getF().getValue());
-            System.out.println("Сигнал тока фазы С: "+lsvc.getSignals().get(5).getInstMag().getF().getValue());
+//            System.out.println("Сигнал тока фазы А: "+lsvc.getSignals().get(3).getInstMag().getF().getValue());
+//            System.out.println("Сигнал тока фазы В: "+lsvc.getSignals().get(4).getInstMag().getF().getValue());
+//            System.out.println("Сигнал тока фазы С: "+lsvc.getSignals().get(5).getInstMag().getF().getValue());
         }
 
         NHMIP nhmip = new NHMIP();
+
         List<NHMIPoint<Double,Double>> circle1 = new ArrayList<>();
         List<NHMIPoint<Double,Double>> circle2 = new ArrayList<>();
         List<NHMIPoint<Double,Double>> circle3 = new ArrayList<>();
@@ -234,10 +240,13 @@ public class main_PDIS {
             value2X = setpoint5 * i / iters * cos2;
             LeftAngDir.add(new NHMIPoint(value1X, value1Y));
             RightAngDir.add(new NHMIPoint(value2X, value2Y));
-
         }
 
         nhmip.drawCharacteristic("Stage1", circle1);
+        nhmip.addSignals(
+                new NHMISignal("ZmagAB", mmxu.getZ().getPhsA().getCVal().getOrtX(),mmxu.getZ().getPhsA().getCVal().getOrtY()),
+                new NHMISignal("ZmagBC", mmxu.getZ().getPhsB().getCVal().getOrtX(),mmxu.getZ().getPhsB().getCVal().getOrtY()),
+                new NHMISignal("ZmagCA", mmxu.getZ().getPhsC().getCVal().getOrtX(),mmxu.getZ().getPhsC().getCVal().getOrtY()));
         nhmip.drawCharacteristic("Stage2", circle2);
         nhmip.drawCharacteristic("Stage3", circle3);
         nhmip.drawCharacteristic("Stage4", circle4);

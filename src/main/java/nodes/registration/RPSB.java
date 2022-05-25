@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import nodes.common.LN;
 import objects.data.enums.Direction;
+import objects.data.typeData.Vector;
 import objects.info.ACD;
 import objects.info.ACT;
 import objects.info.SPS;
@@ -29,15 +30,29 @@ public class RPSB extends LN {
     /** Срабатывание (отключение по асинхронному режиму) */
     private ACT Op = new ACT();
     ///////////////////////////////////////////////////////////////////////////
-    // todo Реализация узла
+    // о
     ///////////////////////////////////////////////////////////////////////////
+    private Vector AvarSest = new Vector();
+    private int size = 80;
+    private float[] buff = new float[size];
+    private int count = 0;
+    private float diff = 0;
+
     @Override
     public void process() {
-        if (Math.abs(SeqA.getС2().getCVal().getMag().getValue()) < 1000f){
+        calc(SeqA, AvarSest);
+        if (Math.abs(AvarSest.getMag().getValue()) < -0.4f){
             Op.getGeneral().setValue(true); // Колебания обнаружены, необходимо заблокировать защиту
         } else{
             Op.getGeneral().setValue(false); // Колебания не обнаружены
         }
+    }
+
+    private void calc(SEQ seq, Vector v){
+        diff = seq.getС2().getCVal().getMag().getValue() - buff[count];
+        v.getMag().setValue(diff);
+        buff[count] = seq.getС2().getCVal().getMag().getValue();
+        if(++count >= size) count=0;
     }
 
 

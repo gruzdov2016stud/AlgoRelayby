@@ -13,6 +13,7 @@ import nodes.protection.PHAR;
 import nodes.protection.PTOC;
 import nodes.protection.PTRC;
 import nodes.switchgear.XCBR;
+import objects.measured.SAV;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,93 +25,125 @@ public class main {
 //----------------------------------------------------todo Узел LSVC lsvc---------------------------------------------//
         LSVC lsvc = new LSVC();
         /*Включение*/
-        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVkl";
+//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVkl";
         /*Внешнее ABC*/
 //        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVneshABC";
         /*Внутренне A,B,BC*/
-//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA";
+        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA";
 //        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutB";
 //        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutBC";
         lsvc.readComtrade(path);
         logicalNodes.add(lsvc);
-//----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
-        NHMI nhmi1 = new NHMI();
-        NHMI nhmi2 = new NHMI();
-        logicalNodes.add(nhmi1);
-        logicalNodes.add(nhmi2);
 //----------------------------------------------------todo Узел MMXU mmxu---------------------------------------------//
         /**Измерения*/
-        MMXU mmxu1 = new MMXU(
-                lsvc.getSignals().get(0),
-                lsvc.getSignals().get(1),
-                lsvc.getSignals().get(2)
-                );
+        MMXU mmxu1 = new MMXU();
         logicalNodes.add(mmxu1);
-        MMXU mmxu2 = new MMXU(
-                lsvc.getSignals().get(3),
-                lsvc.getSignals().get(4),
-                lsvc.getSignals().get(5)
-        );
+        mmxu1.setInstMagIa(lsvc.getSignals().get(0));
+        mmxu1.setInstMagIb(lsvc.getSignals().get(1));
+        mmxu1.setInstMagIc(lsvc.getSignals().get(2));
+        MMXU mmxu2 = new MMXU();
         logicalNodes.add(mmxu2);
+        mmxu2.setInstMagIa(lsvc.getSignals().get(3));
+        mmxu2.setInstMagIb(lsvc.getSignals().get(4));
+        mmxu2.setInstMagIc(lsvc.getSignals().get(5));
 //----------------------------------------------------todo Узел MHAI mhai---------------------------------------------//
-        MHAI mhai1 = new MHAI(
-                lsvc.getSignals().get(0),
-                lsvc.getSignals().get(1),
-                lsvc.getSignals().get(2)
-        );
+        MHAI mhai1 = new MHAI(1,5);
+        mhai1.setInstIa(lsvc.getSignals().get(0));
+        mhai1.setInstIb(lsvc.getSignals().get(1));
+        mhai1.setInstIc(lsvc.getSignals().get(2));
         logicalNodes.add(mhai1);
-        MHAI mhai2 = new MHAI(
-                lsvc.getSignals().get(3),
-                lsvc.getSignals().get(4),
-                lsvc.getSignals().get(5)
-        );
+        MHAI mhai2 = new MHAI(1,5);
+        mhai1.setInstIa(lsvc.getSignals().get(3));
+        mhai1.setInstIb(lsvc.getSignals().get(4));
+        mhai1.setInstIc(lsvc.getSignals().get(5));
         logicalNodes.add(mhai2);
 //----------------------------------------------------todo Узел RMXU rmxu---------------------------------------------//
-        RMXU rmxu = new RMXU(mmxu1.getA(), mmxu2.getA());
+        RMXU rmxu = new RMXU();
+        rmxu.getInputs().add(mmxu1.getA());
+        rmxu.getInputs().add(mmxu2.getA());
         logicalNodes.add(rmxu);
 //----------------------------------------------------todo Узел RMXU rmxu---------------------------------------------//
-        PHAR phar = new PHAR(0.2, mhai1.getHA(), mhai2.getHA());
+        PHAR phar = new PHAR(-0.1);
+        phar.getHInputs().add(mhai1.getHA());
+        phar.getHInputs().add(mhai2.getHA());
         logicalNodes.add(phar);
 //----------------------------------------------------todo Узел PTOC dto--------------------------------------------//
         /**Дифференциальная токовая отсечка*/
-        PTOC dto = new PTOC(rmxu.getDifACIc(),1107);
+        PTOC dto = new PTOC(20);
+        dto.setDifACIc(rmxu.getDifACIc());
         logicalNodes.add(dto);
 //----------------------------------------------------todo Узел PDIF pdif--------------------------------------------//
         /**Дифференциальной защиты трансформатора*/
-        PDIF pdif = new PDIF(rmxu.getDifACIc(),phar.getBlkOp(),
-                200, 0, 1000, 2000, 1000, 10000, 1000, 10000, 1000);
+        PDIF pdif = new PDIF(100,
+//                0, 0.5,
+//                          1, 0.5,
+//                          2.5, 1.2,
+//                          5, 2.5);
+                0, 5,
+                        10, 5,
+                        25, 12,
+                        50, 25);
+        pdif.setDifACIc(rmxu.getDifACIc());
+        pdif.setBlkOp(phar.getBlkOp());
+        pdif.calc();
         logicalNodes.add(pdif);
 // ----------------------------------------------------todo Узел PTRC ptrc--------------------------------------------//
-        PTRC ptrc = new PTRC(dto.getOp(), pdif.getOp());
+        PTRC ptrc = new PTRC(2);
+        ptrc.getOpS().add(dto.getOp());
+        ptrc.getOpS().add(pdif.getOp());
         logicalNodes.add(ptrc);
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
-        CSWI cswi1 = new CSWI(ptrc.getTr(),true, 2);
+        CSWI cswi1 = new CSWI(true, 2);
+        cswi1.setOpOpn(ptrc.getTr());
         logicalNodes.add(cswi1);
-        CSWI cswi2 = new CSWI(ptrc.getTr(),true, 2);
+        CSWI cswi2 = new CSWI(true, 2);
+        cswi2.setOpOpn(ptrc.getTr());
         logicalNodes.add(cswi2);
 //----------------------------------------------------todo Узел XCBR xcbr---------------------------------------------//
-        XCBR xcbr1 = new XCBR(cswi1.getPos());
+        XCBR xcbr1 = new XCBR();
+        xcbr1.setPos(cswi1.getPos());
         logicalNodes.add(xcbr1);
-        XCBR xcbr2 = new XCBR(cswi2.getPos());
+
+        XCBR xcbr2 = new XCBR();
+        xcbr2.setPos(cswi2.getPos());
         logicalNodes.add(xcbr2);
-//----------------------------------------------------todo Отображение--------------------------------------------//
-        nhmi1.addSignals("ВН",
+//----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
+        NHMI nhmi1 = new NHMI();
+        logicalNodes.add(nhmi1);
+        nhmi1.addSignals(new NHMISignal("IaVn(t)", lsvc.getSignals().get(0).getInstMag().getF()));
+        nhmi1.addSignals(new NHMISignal("IaNn(t)", lsvc.getSignals().get(3).getInstMag().getF()));
+        nhmi1.addSignals(new NHMISignal("FurIaVn", mmxu1.getA().getPhsA().getCVal().getMag()));
+        nhmi1.addSignals(new NHMISignal("FurIaNn", mmxu2.getA().getPhsA().getCVal().getMag()));
+        nhmi1.addSignals(new NHMISignal("IaVn1", mhai1.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по вн
+        nhmi1.addSignals(new NHMISignal("IaVn2", mhai1.getHA().getPhsAHar().get(2).getMag()));
+        nhmi1.addSignals(new NHMISignal("IaNn1", mhai2.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по нн
+        nhmi1.addSignals(new NHMISignal("IaNn2", mhai2.getHA().getPhsAHar().get(2).getMag()));
+        NHMI nhmi3 = new NHMI();
+        logicalNodes.add(nhmi3);
+        nhmi3.addSignals("ВН",
                 new NHMISignal("IAвн", lsvc.getSignals().get(0).getInstMag().getF()),
                 new NHMISignal("IBвн", lsvc.getSignals().get(1).getInstMag().getF()),
                 new NHMISignal("ICвн", lsvc.getSignals().get(2).getInstMag().getF()));
-        nhmi1.addSignals("НН",
+        nhmi3.addSignals("НН",
                 new NHMISignal("IAнн", lsvc.getSignals().get(3).getInstMag().getF()),
                 new NHMISignal("IBнн", lsvc.getSignals().get(4).getInstMag().getF()),
                 new NHMISignal("ICнн", lsvc.getSignals().get(5).getInstMag().getF()));
 
-        nhmi1.addSignals(new NHMISignal("<Блок>", phar.getBlkOp().getStValPhGeneral()));
-        nhmi1.addSignals(new NHMISignal("ДТО Str", dto.getStr().getGeneral()));
-        nhmi1.addSignals(new NHMISignal("ДТО Op", dto.getOp().getGeneral()));
-        nhmi1.addSignals(new NHMISignal("ДЗТ Str", pdif.getStr().getGeneral()));
-        nhmi1.addSignals(new NHMISignal("ДЗТ Op", pdif.getOp().getGeneral()));
+        NHMI nhmi2 = new NHMI();
+        logicalNodes.add(nhmi2);
+        nhmi2.addSignals(new NHMISignal("IbVn", lsvc.getSignals().get(0).getInstMag().getF()));
+        nhmi2.addSignals(new NHMISignal("IbNn", lsvc.getSignals().get(3).getInstMag().getF()));
+        nhmi2.addSignals(
+                new NHMISignal("DifA", rmxu.getDifACIc().getPhsA().getCVal().getMag()),
+                new NHMISignal("SrtValDTO", rmxu.getDifACIc().getPhsA().getCVal().getMag()),
+                new NHMISignal("StrValDZT", pdif.getTripPoint().getPhsA().getCVal().getMag()));
+        nhmi2.addSignals(new NHMISignal("<Блок>", phar.getBlkOp().getStValPhGeneral()));
+        nhmi2.addSignals(new NHMISignal("ТО Op", dto.getOp().getGeneral()));
+        nhmi2.addSignals(new NHMISignal("ДЗТ Str", pdif.getStr().getGeneral()));
+        nhmi2.addSignals(new NHMISignal("ДЗТ Op", pdif.getOp().getGeneral()));
 
-        nhmi1.addSignals(new NHMISignal("SwitchMode ВН", xcbr1.getPos().getCtIVal()));
-        nhmi1.addSignals(new NHMISignal("SwitchMode НН", xcbr2.getPos().getCtIVal()));
+        nhmi2.addSignals(new NHMISignal("SwitchMode ВН", xcbr1.getPos().getCtIVal()));
+        nhmi2.addSignals(new NHMISignal("SwitchMode НН", xcbr2.getPos().getCtIVal()));
 
         while (lsvc.hasNext()){
             logicalNodes.forEach(LN::process);

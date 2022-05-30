@@ -58,35 +58,14 @@ public class CSWI extends LN {
     private boolean trip;
 
     /**
-     *
-     * @param opOpn - Действие «Отключить выключатель» выключить (FALSE), включить (TRUE)
      * @param CtIVal - Присвоение начальной команды на отключение выключить (FALSE), включить (TRUE)
      * @param SV - Присвоение начального положения выключателя 2 - ON; 1 - OFF.
      */
-    public CSWI(ACT opOpn, boolean CtIVal, int SV) {
-        OpOpn = opOpn;
-        Pos.getCtIVal().setValue(CtIVal);
-        if(SV == 2) Pos.getStVal().setValue(StVal.ON);
-        if(SV == 1) Pos.getStVal().setValue(StVal.OFF);
-    }
-    /**
-     *
-     * @param opOpn1 ... opOpn5 - Действие «Отключить выключатель» выключить (FALSE), включить (TRUE)
-     * @param CtIVal - Присвоение начальной команды на отключение выключить (FALSE), включить (TRUE)
-     * @param SV - Присвоение начального положения выключателя 2 - ON; 1 - OFF.
-     */
-    public CSWI(ACT opOpn1, ACT opOpn2, ACT opOpn3, ACT opOpn4, ACT opOpn5, boolean CtIVal, int SV) {
-        OpOpn1 = opOpn1;
-        OpOpn2 = opOpn2;
-        OpOpn3 = opOpn3;
-        OpOpn4 = opOpn4;
-        OpOpn5 = opOpn5;
-        Pos.getCtIVal().setValue(CtIVal);
-        if(SV == 2) Pos.getStVal().setValue(StVal.ON);
-        if(SV == 1) Pos.getStVal().setValue(StVal.OFF);
-        this.trip = true;
-    }
+    public CSWI(boolean CtIVal, int SV) {
 
+        if(SV == 2) Pos.getStVal().setValue(StVal.ON);
+        if(SV == 1) Pos.getStVal().setValue(StVal.OFF);
+    }
     public CSWI() {
     }
 

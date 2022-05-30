@@ -40,22 +40,49 @@ public class RMXU extends LN {
     private ArrayList<WYE> inputs = new ArrayList<>();
     /** Временный вектор для хранения промежуточного значения для тормазного тока*/
     private Vector rstCurrent = new Vector();
+    double St = 500*(Math.pow(10,3));
+    ArrayList<Float> U = new ArrayList<>();
+    ArrayList<Float> Kt = new ArrayList<>();
+    ArrayList<Float> basis = new ArrayList<>();
 
     /** Общий случай*/
     public RMXU() {
+        U.add(500F);
+        U.add(10F);
+        Kt.add(160F);
+        Kt.add(8000F);
     }
     /**
      * @param aloc ...aloc_n - Токи измерителя на концах линии из MMXU
      */
     public RMXU(WYE...aloc) {
+        U.add(500F);
+        U.add(10F);
+        Kt.add(160F);
+        Kt.add(8000F);
+        // Расчитать базисный токи ВН и ННArray float
         for(int i = 0; i < inputs.size(); i++) {
-            this.Aloc = aloc[i];
-            this.inputs.add(Aloc);
+            this.inputs.add(aloc[i]);
         }
     }
 
     @Override
     public void process() {
+        for (int j = 0; j != 2; j++) {
+            basis.add((float) (St / (U.get(j)* Kt.get( j)*Math.sqrt(3))));
+            for(WYE w: inputs){
+                inputs.get(j).getPhsA().getCVal().getMag().setValue(
+                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+                );
+                inputs.get(j).getPhsB().getCVal().getMag().setValue(
+                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+                );
+                inputs.get(j).getPhsC().getCVal().getMag().setValue(
+                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+                );
+            }
+        }
+
         float dAx = 0, dAy = 0;
         float dBx = 0, dBy = 0;
         float dCx = 0, dCy = 0;
@@ -84,14 +111,12 @@ public class RMXU extends LN {
             }
         }
         /** Расчёт значений по-фазно*/
-        System.out.println(DifACIc);
         DifACIc.getPhsA().getCVal().setValueO(dAx, dAy);
         DifACIc.getPhsB().getCVal().setValueO(dBx, dBy);
         DifACIc.getPhsC().getCVal().setValueO(dCx, dCy);
-
-        RstA.getPhsA().getInstCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
-        RstA.getPhsB().getInstCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
-        RstA.getPhsC().getInstCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
+        RstA.getPhsA().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
+        RstA.getPhsB().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
+        RstA.getPhsC().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
     }
 
     // ================================================ Не используемые ================================================

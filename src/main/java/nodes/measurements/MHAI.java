@@ -46,25 +46,18 @@ public class MHAI extends LN {
     private List<Integer> harmonics = new LinkedList<>();
 
     /**
-     *
-     * @param instMagIa Мгновенное значение Ia из узла LSVC
-     * @param instMagIb Мгновенное значение Ib из узла LSVC
-     * @param instMagIc Мгновенное значение Ic из узла LSVC
      * @param harmonicS Указать требуемые гармоники
      */
-    public MHAI(SAV instMagIa, SAV instMagIb, SAV instMagIc, int... harmonicS) {
-        this.instIa = instMagIa;
-        this.instIb = instMagIb;
-        this.instIc = instMagIc;
+    public MHAI(int... harmonicS) {
         this.harmonics.clear();
         for(int i = 0; i < harmonicS.length; i++) {
             int harmoS = harmonicS[i];
             this.harmonics.add(harmoS);
         }
-        for(int hS= 0; hS < 10; hS++){
-            fIaList.add(new Fourier(hS));
-            fIbList.add(new Fourier(hS));
-            fIcList.add(new Fourier(hS));
+        for(int h= 0; h < 10; h++){
+            fIaList.add(new Fourier(h));
+            fIbList.add(new Fourier(h));
+            fIcList.add(new Fourier(h));
         }
     }
 

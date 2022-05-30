@@ -86,11 +86,9 @@ public class PTOC extends LN {
     private double dLTmmsAutomaticAccelearation = 0;
     /**
      * ДТО частный случай для ДЗЛ.
-     * @param difACIc - Дифференциальный ток из RMXU
      * @param strVal - выбор уставки
      */
-    public PTOC(WYE difACIc, double strVal) {
-        this.DifACIc = difACIc;
+    public PTOC( double strVal) {
         this.StrVal.getSetMag().setValue((float) strVal);
     }
     public PTOC(){

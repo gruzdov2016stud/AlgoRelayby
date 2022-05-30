@@ -41,18 +41,6 @@ public class PTRC extends LN {
     private int count = 0;
     private int countOp = 0;
     /**
-     * Объединения сигналов защит для выдачи отключающего воздействия ДЗЛ
-     * @param op1 - Дифференциальная отсечка
-     * @param op2 - Дифференциальная ток
-     * @param op3 - Блокировка
-     */
-    public PTRC(ACT op1, ACT op2, ACT op3) {
-        this.OpS.add(op1);
-        this.OpS.add(op2);
-        this.OpS.add(op3);
-        countOp = 3;
-    }
-    /**
      * Объединения сигналов защит для выдачи отключающего воздействия
      * @param OpI Все пуски на отключение
      */
@@ -62,6 +50,10 @@ public class PTRC extends LN {
             this.OpS.add(Op);
             countOp++;
         }
+    }
+
+    public PTRC(int numberOp) {
+        countOp = numberOp;
     }
 
     @Override

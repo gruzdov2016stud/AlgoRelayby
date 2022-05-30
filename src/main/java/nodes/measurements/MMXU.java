@@ -100,10 +100,11 @@ public class MMXU extends LN {
         fourierIa.process(instMagIa, A.getPhsA().getCVal());
         fourierIb.process(instMagIb, A.getPhsB().getCVal());
         fourierIc.process(instMagIc, A.getPhsC().getCVal());
+
         fourierUa.process(instMagUa, PhV.getPhsA().getCVal());
         fourierUb.process(instMagUb, PhV.getPhsB().getCVal());
         fourierUc.process(instMagUc, PhV.getPhsC().getCVal());
-        System.out.println(A.getPhsA().getCVal().getAng().getValue());
+        System.out.println(A.getPhsA().getCVal().getMag().getValue());
 
         /*Расчет углов по фазам*/
         float angA = (float) Math.toRadians(

@@ -64,28 +64,24 @@ public class PDIF extends LN {
     private float rst0 = 0;
     private float x0 = 0, y0 = 0;
     /**
-     *
-     * @param difACIc - дифференциальный ток из узла RMXU
-     * @param blkOp  - блокировка защиты из PHAR
-     * @param x_y x и у - координаты для задания формы кривой по Х и У координаты для для задания формы кривой по
+     * @param Itorm_Idiff x и у - координаты для задания формы кривой по Х и У координаты для для задания формы кривой по
      * @param DlTmms - Минимальное время срабатывания
      */
-    public PDIF(WYE difACIc, SPS blkOp, int DlTmms, float... x_y) {
-        DifACIc = difACIc;
-        BlkOp = blkOp;
+    public PDIF(int DlTmms, double... Itorm_Idiff) {
         MinOpTmms.getSetVal().setValue(DlTmms);
-        for(int i = 0; i < x_y.length; i += 2) {
-            this.x0 = x_y[i];
-            this.y0 = x_y[i+1];
+        for(int i = 0; i < Itorm_Idiff.length; i += 2) {
+            this.x0 = (float) Itorm_Idiff[i];
+            this.y0 = (float) Itorm_Idiff[i+1];
             TmASt.getCrvPts().add(new Point(x0,y0));
         }
-        /*расчет значений для характеристики*/
+    }
+    /*расчет значений для характеристики*/
+    public void calc(){
         dif0 = TmASt.getCrvPts().get(1).getYVal().getValue(); //1 - у нулевой и у первой точки значение "y" одинаково
         rst0 = TmASt.getCrvPts().get(1).getXVal().getValue();
         k = (TmASt.getCrvPts().get(2).getYVal().getValue() - TmASt.getCrvPts().get(1).getYVal().getValue()) /
                 (TmASt.getCrvPts().get(2).getXVal().getValue() - TmASt.getCrvPts().get(1).getXVal().getValue());
     }
-
     @Override
     public void process() {
         if (RstCurrent.getMag().getValue() < rst0) {
@@ -109,15 +105,16 @@ public class PDIF extends LN {
         Str.getPhsC().setValue(phsC);
         Str.getGeneral().setValue(general);
 
-        if (Str.getPhsA().getValue()) breakerTimeA += 20.0/80; else breakerTimeA = 0;
-        if (Str.getPhsB().getValue()) breakerTimeB += 20.0/80; else breakerTimeB = 0;
-        if (Str.getPhsC().getValue()) breakerTimeC += 20.0/80; else breakerTimeC = 0;
+        if (Str.getPhsA().getValue()) breakerTimeA ++; else breakerTimeA = 0;
+        if (Str.getPhsB().getValue()) breakerTimeB ++; else breakerTimeB = 0;
+        if (Str.getPhsC().getValue()) breakerTimeC ++; else breakerTimeC = 0;
 
         /** Сброс выдержки, если блокировка */
-        if(BlkOp.getStValPhA().getValue()) breakerTimeA = 0;
-        if(BlkOp.getStValPhB().getValue()) breakerTimeB = 0;
-        if(BlkOp.getStValPhC().getValue()) breakerTimeC = 0;
-
+        if(BlkOp.getStValPhGeneral().getValue()){
+            breakerTimeA = 0;
+            breakerTimeB = 0;
+            breakerTimeC = 0;
+        }
         /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
         if (breakerTimeA > MinOpTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
         if (breakerTimeB > MinOpTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);

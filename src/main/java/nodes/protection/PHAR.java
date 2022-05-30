@@ -23,7 +23,7 @@ public class PHAR extends LN {
     /**Последовательность тока гармоник или интергармоник*/
     private HWYE HA = new HWYE();
     /** Уставка блокировки по 2 или 5 гармоники */
-    private ASG HBlock = new ASG();
+    private ASG StrBlock = new ASG();
     ///////////////////////////////////////////////////////////////////////////
     // todo Выходные параметры
     ///////////////////////////////////////////////////////////////////////////
@@ -34,18 +34,11 @@ public class PHAR extends LN {
     ///////////////////////////////////////////////////////////////////////////
     /** Гармонический состав сигнала(для блокировки по какой-либо гармонике) */
     private ArrayList<HWYE> hInputs = new ArrayList<>();
-    private HWYE hI = new HWYE();
-
     /**
-     * @param hBlock - Уставка блокировки по 2 или 5 гармоники (%)
-     * @param hAs HA_1...HA_N- Последовательность тока гармоник от каждого измерителя
+     * @param hBlock - Уровень блокировки по 2 или 5 гармоники (%)
      */
-    public PHAR(double hBlock, HWYE... hAs) {
-        HBlock.getSetMag().setValue((float) hBlock);
-        for(int i = 0; i < hAs.length; i ++) {
-            this.HA = hAs[i];
-            hInputs.add(HA);
-        }
+    public PHAR(double hBlock) {
+        StrBlock.getSetMag().setValue((float) hBlock);
         this.BlkOp.getStValPhA().setValue(false);
         this.BlkOp.getStValPhC().setValue(false);
         this.BlkOp.getStValPhB().setValue(false);
@@ -58,19 +51,24 @@ public class PHAR extends LN {
         for (HWYE w : hInputs) {
             if (!BlkOp.getStValPhA().getValue()) {
                 BlkOp.getStValPhA().setValue(
-                        w.getPhsAHar().get(2).getMag().getValue() / w.getPhsAHar().get(1).getMag().getValue() > HBlock.getSetMag().getValue());
-            }
+                        w.getPhsAHar().get(5).getMag().getValue() / w.getPhsAHar().get(1).getMag().getValue()
+                                > StrBlock.getSetMag().getValue());
+            } else BlkOp.getStValPhA().setValue(false);
+
             if (!BlkOp.getStValPhB().getValue()) {
                 BlkOp.getStValPhB().setValue(
-                        w.getPhsBHar().get(2).getMag().getValue() / w.getPhsBHar().get(1).getMag().getValue() > HBlock.getSetMag().getValue());
-            }
+                        w.getPhsBHar().get(5).getMag().getValue() / w.getPhsBHar().get(1).getMag().getValue()
+                                > StrBlock.getSetMag().getValue());
+            } else BlkOp.getStValPhB().setValue(false);
+
             if (!BlkOp.getStValPhC().getValue()) {
                 BlkOp.getStValPhC().setValue(
-                        w.getPhsCHar().get(2).getMag().getValue() / w.getPhsCHar().get(1).getMag().getValue() > HBlock.getSetMag().getValue());
-            }
-            BlkOp.getStValPhGeneral().setValue(
-                    BlkOp.getStValPhA().getValue()||BlkOp.getStValPhB().getValue()||BlkOp.getStValPhC().getValue()
-            );
+                        w.getPhsCHar().get(5).getMag().getValue() / w.getPhsCHar().get(1).getMag().getValue()
+                                > StrBlock.getSetMag().getValue());
+            } else BlkOp.getStValPhC().setValue(false);
+
+            if(BlkOp.getStValPhA().getValue()||BlkOp.getStValPhB().getValue()||BlkOp.getStValPhC().getValue())
+                BlkOp.getStValPhGeneral().setValue(true);
         }
     }
     // ================================================ Не используемые ================================================

@@ -5,7 +5,7 @@ import objects.measured.SAV;
 
 public class Fourier extends Filter {
     /*Количество снятий сигнала за период*/
-    private int size = 80;
+    private int size = 20;
     /*Шаг дискретизации*/
     private double delta_t = 2 * Math.PI/size;
     /*Коэффициент фильтра фурье*/
@@ -24,13 +24,13 @@ public class Fourier extends Filter {
 
 
     public Fourier() {
-        for (int i=0;i<80; i++) {
+        for (int i=0;i<size; i++) {
             sin[i]=Math.sin(delta_t*i);
             cos[i]=Math.cos(delta_t*i);
         }
     }
     public Fourier(int harmonic) {
-        for (int i=0;i<80; i++) {
+        for (int i=0;i<size; i++) {
             sin[i]=Math.sin(delta_t*i*harmonic);
             cos[i]=Math.cos(delta_t*i*harmonic);
         }
@@ -44,9 +44,6 @@ public class Fourier extends Filter {
         /*Сумма по оси Х и Y */
         sumX += a - bufferX[count];
         sumY += b - bufferY[count];
-        /*Действующее значение и Угол в радианах */
-        float mag = (float) Math.sqrt(sumX * sumX + sumY * sumY);
-        float ang = (float) Math.atan2(sumY, sumX);
         /*Заполняем значения из «прошлого» - «будущем»*/
         bufferX[count] = a;
         bufferY[count] = b;

@@ -84,7 +84,7 @@ public class ZeroSequenceProtection {
         ptoc1.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc1.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc1.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc1.getStrVal().getSetMag().getF().setValue(118f);;// выбор уставки 1 кА 453f За спиной 250 кз6 = 180f
+        ptoc1.getStrVal().getSetMag().setValue(118f);;// выбор уставки 1 кА 453f За спиной 250 кз6 = 180f
         ptoc1.getOpDLTmms().getSetVal().setValue(100); // выбор выдержки по времени
         ptoc1.setDir(rdir.getDir()); // передача направления мощности
         ptoc1.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
@@ -97,7 +97,7 @@ public class ZeroSequenceProtection {
         ptoc2.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc2.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc2.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc2.getStrVal().getSetMag().getF().setValue(116f);;// выбор уставки 1 кА
+        ptoc2.getStrVal().getSetMag().setValue(116f);;// выбор уставки 1 кА
         ptoc2.getOpDLTmms().getSetVal().setValue(300); // выбор выдержки по времени
         ptoc2.setDir(rdir.getDir()); // передача направления мощности
         ptoc2.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
@@ -110,7 +110,7 @@ public class ZeroSequenceProtection {
         ptoc3.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc3.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc3.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc3.getStrVal().getSetMag().getF().setValue(118f);;// выбор уставки 1 кА
+        ptoc3.getStrVal().getSetMag().setValue(118f);;// выбор уставки 1 кА
         ptoc3.getOpDLTmms().getSetVal().setValue(400); // выбор выдержки по времени
         ptoc3.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
         ptoc3.setDir(rdir.getDir()); // передача направления мощности
@@ -123,7 +123,7 @@ public class ZeroSequenceProtection {
         ptoc1NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc1NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc1NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc1NE.getStrVal().getSetMag().getF().setValue(100f);;// выбор уставки 1 кА
+        ptoc1NE.getStrVal().getSetMag().setValue(100f);;// выбор уставки 1 кА
         ptoc1NE.getOpDLTmms().getSetVal().setValue(100); // выбор выдержки по времени
         ptoc1NE.setDir(rdir.getDir()); // передача направления мощности
         ptoc1NE.getDirMod().getSetVal().setValue(0); // выбор ненаправленная защиты
@@ -135,7 +135,7 @@ public class ZeroSequenceProtection {
         ptoc2NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc2NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc2NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc2NE.getStrVal().getSetMag().getF().setValue(100f);;// выбор уставки 1 кА
+        ptoc2NE.getStrVal().getSetMag().setValue(100f);;// выбор уставки 1 кА
         ptoc2NE.getOpDLTmms().getSetVal().setValue(500); // выбор выдержки по времени
         ptoc2NE.setDir(rdir.getDir()); // передача направления мощности
         ptoc2NE.getDirMod().getSetVal().setValue(0); // выбор направленной защиты
@@ -177,7 +177,7 @@ public class ZeroSequenceProtection {
 
         //симметрич составляющие
         nhmi1.addSignals(new NHMISignal("I0", msqi.getSeqA().getС3().getCVal().getMag()),
-                new NHMISignal("Уставка ptoc1", ptoc1.getStrVal().getSetMag().getF()));
+                new NHMISignal("Уставка ptoc1", ptoc1.getStrVal().getSetMag()));
         nhmi1.addSignals(new NHMISignal("U0", msqi.getSeqV().getС3().getCVal().getMag()));
 //         Направление мощности
         nhmi1.addSignals(new NHMISignal("Направ",rdir.getDir().getGeneral()));

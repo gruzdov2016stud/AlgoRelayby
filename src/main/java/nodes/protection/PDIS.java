@@ -77,9 +77,9 @@ public class PDIS extends LN {
     public void process() {
 
         /**Проверка уставки*/
-        boolean phsA = Z.getPhsA().getCVal().getMag().getValue() < PoRch.getSetMag().getF().getValue();
-        boolean phsB = Z.getPhsB().getCVal().getMag().getValue() < PoRch.getSetMag().getF().getValue();
-        boolean phsC = Z.getPhsC().getCVal().getMag().getValue() < PoRch.getSetMag().getF().getValue();
+        boolean phsA = Z.getPhsA().getCVal().getMag().getValue() < PoRch.getSetMag().getValue();
+        boolean phsB = Z.getPhsB().getCVal().getMag().getValue() < PoRch.getSetMag().getValue();
+        boolean phsC = Z.getPhsC().getCVal().getMag().getValue() < PoRch.getSetMag().getValue();
         boolean general = phsA || phsB || phsC;
 
         /**Инициализация Пуска на Срабатывание (обнаружено нарушение или недопустимое состояние)*/

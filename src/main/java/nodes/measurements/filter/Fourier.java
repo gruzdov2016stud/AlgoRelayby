@@ -29,6 +29,12 @@ public class Fourier extends Filter {
             cos[i]=Math.cos(delta_t*i);
         }
     }
+    public Fourier(int harmonic) {
+        for (int i=0;i<80; i++) {
+            sin[i]=Math.sin(delta_t*i*harmonic);
+            cos[i]=Math.cos(delta_t*i*harmonic);
+        }
+    }
 
     @Override
     public void process(SAV sav, Vector vector) {

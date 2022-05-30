@@ -10,7 +10,6 @@ import nodes.measurements.MMXU;
 import nodes.measurements.MSQI;
 import nodes.measurements.utils.LSVC;
 import nodes.protection.PDIS;
-import nodes.protection.PTOC;
 import nodes.protection.PTRC;
 import nodes.registration.RDIR_PDIS;
 import nodes.registration.RPSB;
@@ -49,7 +48,7 @@ public class main_PDIS {
          *
          *  KZ7 KZ6 KZ5 KZ1
          */
-        String path = "src/main/resources/Опыты/KZ4";
+        String path = "src/main/resources/Опыты/KZ7";
 //        String path = "src/main/resources/Опыты (с качеством)/KZ5";
         lsvc.readComtrade(path);
 //----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
@@ -92,7 +91,7 @@ public class main_PDIS {
         PDIS pdis1 =new PDIS();
         logicalNodes.add(pdis1);
         pdis1.setZ(mmxu.getZ());// присвоение сопротивления
-        pdis1.getPoRch().getSetMag().getF().setValue(setpoint1);
+        pdis1.getPoRch().getSetMag().setValue(setpoint1);
         pdis1.setDir(rdir.getDir()); // передача направления мощности
         pdis1.getOpDLTmms().getSetVal().setValue(timeSet1); // выбор выдержки по времени
         pdis1.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
@@ -102,7 +101,7 @@ public class main_PDIS {
         PDIS pdis2 =new PDIS();
         logicalNodes.add(pdis2);
         pdis2.setZ(mmxu.getZ());// присвоение сопротивления
-        pdis2.getPoRch().getSetMag().getF().setValue(setpoint2);
+        pdis2.getPoRch().getSetMag().setValue(setpoint2);
         pdis2.setDir(rdir.getDir()); // передача направления мощности
         pdis2.getOpDLTmms().getSetVal().setValue(timeSet2); // выбор выдержки по времени
         pdis2.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
@@ -111,7 +110,7 @@ public class main_PDIS {
         PDIS pdis3 =new PDIS();
         logicalNodes.add(pdis3);
         pdis3.setZ(mmxu.getZ());// присвоение сопротивления
-        pdis3.getPoRch().getSetMag().getF().setValue(setpoint3);
+        pdis3.getPoRch().getSetMag().setValue(setpoint3);
         pdis3.setDir(rdir.getDir()); // передача направления мощности
         pdis3.getOpDLTmms().getSetVal().setValue(timeSet3); // выбор выдержки по времени
         pdis3.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
@@ -120,7 +119,7 @@ public class main_PDIS {
         PDIS pdis4ne =new PDIS();
         logicalNodes.add(pdis4ne);
         pdis4ne.setZ(mmxu.getZ());// присвоение сопротивления
-        pdis4ne.getPoRch().getSetMag().getF().setValue(setpoint4);
+        pdis4ne.getPoRch().getSetMag().setValue(setpoint4);
         pdis4ne.setDir(rdir.getDir()); // передача направления мощности
         pdis4ne.getOpDLTmms().getSetVal().setValue(timeSet4); // выбор выдержки по времени
         pdis4ne.getDirMod().getSetVal().setValue(0); // выбор направленной защиты
@@ -129,20 +128,13 @@ public class main_PDIS {
         PDIS pdis5ne =new PDIS();
         logicalNodes.add(pdis5ne);
         pdis5ne.setZ(mmxu.getZ());// присвоение сопротивления
-        pdis5ne.getPoRch().getSetMag().getF().setValue(setpoint5);
+        pdis5ne.getPoRch().getSetMag().setValue(setpoint5);
         pdis5ne.setDir(rdir.getDir()); // передача направления мощности
         pdis5ne.getOpDLTmms().getSetVal().setValue(timeSet5); // выбор выдержки по времени
         pdis5ne.getDirMod().getSetVal().setValue(0); // выбор направленной защиты
 // ----------------------------------------------------todo Узел PTRC ptrc---------------------------------------------//
-        PTRC ptrc = new PTRC();
-        ptrc.getOp().add(pdis1.getOp());
-        ptrc.getOp().add(pdis2.getOp());
-        ptrc.getOp().add(pdis3.getOp());
-        ptrc.getOp().add(pdis4ne.getOp());
-        ptrc.getOp().add(pdis5ne.getOp());
-        ptrc.getOp().add(rpsb.getOp());
+        PTRC ptrc = new PTRC(pdis1.getOp(), pdis2.getOp(), pdis3.getOp(), pdis4ne.getOp(),pdis5ne.getOp(),rpsb.getOp());
         logicalNodes.add(ptrc);
-
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);

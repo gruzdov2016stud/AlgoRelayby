@@ -3,15 +3,12 @@ package nodes.protection;
 import lombok.Getter;
 import lombok.Setter;
 import nodes.common.LN;
-import objects.data.enums.Direction;
-import objects.data.enums.Validity;
 import objects.data.typeData.Quality;
 import objects.descriptionInfo.CSD;
 import objects.info.ACD;
 import objects.info.ACT;
 import objects.managment.INC;
 import objects.managment.SPC;
-import objects.measured.MV;
 import objects.measured.WYE;
 import objects.setStatus.ING;
 import objects.task.ASG;
@@ -33,6 +30,8 @@ public class PTOC extends LN {
     ///////////////////////////////////////////////////////////////////////////
     // todo Входные параметры
     ///////////////////////////////////////////////////////////////////////////
+    /** Дифференциальный ток из RMXU */
+    private WYE DifACIc = new WYE();
     /**
      * Вектор тока из MSQI
      */
@@ -85,51 +84,65 @@ public class PTOC extends LN {
      * Cчетчик времени после ввода АУ
      */
     private double dLTmmsAutomaticAccelearation = 0;
-
+    /**
+     * ДТО частный случай для ДЗЛ.
+     * @param difACIc - Дифференциальный ток из RMXU
+     * @param strVal - выбор уставки
+     */
+    public PTOC(WYE difACIc, double strVal) {
+        this.DifACIc = difACIc;
+        this.StrVal.getSetMag().setValue((float) strVal);
+    }
+    public PTOC(){
+    }
     @Override
     public void process() {
+/*=================================================ЛР 4=================================================================*/
         /**Проверка уставки*/
-        boolean phsA = A.getPhsA().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
-        boolean phsB = A.getPhsB().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
-        boolean phsC = A.getPhsC().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
+        boolean phsA = DifACIc.getPhsA().getCVal().getMag().getValue() > StrVal.getSetMag().getValue();
+        boolean phsB = DifACIc.getPhsB().getCVal().getMag().getValue() > StrVal.getSetMag().getValue();
+        boolean phsC = DifACIc.getPhsC().getCVal().getMag().getValue() > StrVal.getSetMag().getValue();
         boolean general = phsA || phsB || phsC;
 
-        /**Инициализация Пуска на Срабатывание (обнаружено нарушение или недопустимое состояние)*/
-        Str.getPhsA().setValue(phsA);
-        Str.getPhsB().setValue(phsB);
-        Str.getPhsC().setValue(phsC);
-        Str.getGeneral().setValue(general);
-
-        if (Str.getPhsA().getValue()) breakerTimeA += 20.0/80; else breakerTimeA = 0 ;
-        if (Str.getPhsB().getValue()) breakerTimeB += 20.0/80; else breakerTimeB = 0 ;
-        if (Str.getPhsC().getValue()) breakerTimeC += 20.0/80; else breakerTimeC = 0 ;
-
-
-/**Условия проверки контролирования уставки направления защиты (направленной == 1, FORWARD | ненаправленная == 0, BACKWARD)*/
-        if (DirMod.getSetVal().getValue() == 1) {
-            /**Если направление фаз "за спину"*/
-            if (Dir.getDirGeneral().getValue() == Direction.FORWARD) {
-                breakerTimeA = 0;
-                breakerTimeB = 0;
-                breakerTimeC = 0;
-            }
-            /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
-            if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
-            if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
-            if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
-            Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
-        }
-//        else {
-//            if (Dir.getDirGeneral().getValue() == Direction.BACKWARD) {
+        /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
+        Op.getPhsA().setValue(phsA);
+        Op.getPhsB().setValue(phsB);
+        Op.getPhsC().setValue(phsC);
+        Op.getGeneral().setValue(general);
+/*=================================================ЛР 2=================================================================*/
+//        /**Проверка уставки*/
+//        boolean phsA = A.getPhsA().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
+//        boolean phsB = A.getPhsB().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
+//        boolean phsC = A.getPhsC().getCVal().getMag().getValue() > StrVal.getSetMag().getF().getValue();
+//        boolean general = phsA || phsB || phsC;
+//
+//        /**Инициализация Пуска на Срабатывание (обнаружено нарушение или недопустимое состояние)*/
+//        Str.getPhsA().setValue(phsA);
+//        Str.getPhsB().setValue(phsB);
+//        Str.getPhsC().setValue(phsC);
+//        Str.getGeneral().setValue(general);
+//
+//        if (Str.getPhsA().getValue()) breakerTimeA += 20.0/80; else breakerTimeA = 0 ;
+//        if (Str.getPhsB().getValue()) breakerTimeB += 20.0/80; else breakerTimeB = 0 ;
+//        if (Str.getPhsC().getValue()) breakerTimeC += 20.0/80; else breakerTimeC = 0 ;
+//
+//
+///**Условия проверки контролирования уставки направления защиты (направленной == 1, FORWARD | ненаправленная == 0, BACKWARD)*/
+//        if (DirMod.getSetVal().getValue() == 1) {
+//            /**Если направление фаз "за спину"*/
+//            if (Dir.getDirGeneral().getValue() == Direction.FORWARD) {
 //                breakerTimeA = 0;
 //                breakerTimeB = 0;
 //                breakerTimeC = 0;
 //            }
+//            /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
+//            if (breakerTimeA > OpDLTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
+//            if (breakerTimeB > OpDLTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
+//            if (breakerTimeC > OpDLTmms.getSetVal().getValue()) Op.getPhsC().setValue(true);
+//            Op.getGeneral().setValue(Op.getPhsA().getValue() || Op.getPhsB().getValue() || Op.getPhsC().getValue());
 //        }
-
-
-        /**Автоматическое ускорение*/
-        if (automaticAccelearation.getCtIVal().getValue()) OpDLTmms.getSetVal().setValue(0);
+//        /**Автоматическое ускорение*/
+//        if (automaticAccelearation.getCtIVal().getValue()) OpDLTmms.getSetVal().setValue(0);
 
 
 

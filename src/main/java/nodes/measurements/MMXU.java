@@ -5,7 +5,7 @@ import lombok.Setter;
 import nodes.common.LN;
 import nodes.measurements.filter.Filter;
 import nodes.measurements.filter.Fourier;
-import nodes.measurements.filter.RMS;
+import objects.data.DataAttribute;
 import objects.info.INS;
 import objects.measured.DEL;
 import objects.measured.MV;
@@ -48,37 +48,38 @@ public class MMXU extends LN {
     ///////////////////////////////////////////////////////////////////////////
     // todo Выходные параметры
     ///////////////////////////////////////////////////////////////////////////
-    /**
-     *Активная мощность фазы (Р)
-     */
+    /**Реактивная мощность фазы (Q)*/
+    private WYE VAr = new WYE();
+    /**Фиксируемая мощность фазы (S)*/
+    private WYE VA = new WYE();
+    /**Активная мощность фазы (Р)*/
     private WYE W = new WYE();
-    /**
-     *Суммарная активная мощность (суммарная Р)
-     */
+    /**Суммарная активная мощность (суммарная Р)*/
     private MV TotW = new MV();
-    /**
-     *Суммарная реактивная мощность (суммарная Q)
-     */
+    /**Суммарная реактивная мощность (суммарная Q)*/
     private MV TotVAr = new MV();
-    /**
-     *Суммарная фиксируемая мощность (суммарная S)
-     */
+    /**Суммарная фиксируемая мощность (суммарная S)*/
     private MV TotVA = new MV();
     ///////////////////////////////////////////////////////////////////////////
     // todo Реализация узла
     ///////////////////////////////////////////////////////////////////////////
     /**
-     *Реактивная мощность фазы (Q)
+     * Конструктор с Токами и напряжениями мгновенных значений для дальнейшей обработки фильтром Фурье
      */
-    private WYE VAr = new WYE();
+    public MMXU() {
+
+    }
     /**
-     *Фиксируемая мощность фазы (S)
+     * Для ДЗЛ. Конструктор с Токами мгновенных значений для дальнейшей обработки фильтром Фурье
+     * @param instMagIa Мгновенное значение Ia из узла LSVC
+     * @param instMagIb Мгновенное значение Ib из узла LSVC
+     * @param instMagIc Мгновенное значение Ic из узла LSVC
      */
-    private WYE VA = new WYE();
-    /*    *//**Фильтр RMS*//*
-    Filter rmsFilterIa = new RMS();
-    Filter rmsFilterIb = new RMS();
-    Filter rmsFilterIc = new RMS();*/
+    public MMXU(SAV instMagIa, SAV instMagIb, SAV instMagIc) {
+        this.instMagIa = instMagIa;
+        this.instMagIb = instMagIb;
+        this.instMagIc = instMagIc;
+    }
     /**Фильтр Fourier*/
     private Filter fourierIa = new Fourier();
     private Filter fourierIb = new Fourier();
@@ -90,17 +91,20 @@ public class MMXU extends LN {
 
     @Override
     public void process() {
-        /*-----------------------------------------------ЛР№1--------------------------------------------------------*/
+
+        /*-----------------------------------------------ЛР№1---------------------------------------------------------*/
 /*      rmsFilterIa.process(instIa, A.getPhsA().getCVal());
         rmsFilterIb.process(instIb, A.getPhsB().getCVal());
         rmsFilterIc.process(instIc, A.getPhsC().getCVal());*/
-        /*-----------------------------------------------ЛР№2--------------------------------------------------------*/
+        /*-----------------------------------------------ЛР№2 - 4-----------------------------------------------------*/
         fourierIa.process(instMagIa, A.getPhsA().getCVal());
         fourierIb.process(instMagIb, A.getPhsB().getCVal());
         fourierIc.process(instMagIc, A.getPhsC().getCVal());
         fourierUa.process(instMagUa, PhV.getPhsA().getCVal());
         fourierUb.process(instMagUb, PhV.getPhsB().getCVal());
         fourierUc.process(instMagUc, PhV.getPhsC().getCVal());
+        System.out.println(A.getPhsA().getCVal().getAng().getValue());
+
         /*Расчет углов по фазам*/
         float angA = (float) Math.toRadians(
                 PhV.getPhsA().getCVal().getAng().getValue() - A.getPhsA().getCVal().getAng().getValue());
@@ -127,19 +131,19 @@ public class MMXU extends LN {
         VA.getPhsA().getCVal().getMag().setValue(SA);
         VA.getPhsB().getCVal().getMag().setValue(SB);
         VA.getPhsC().getCVal().getMag().setValue(SC);
-        TotVA.getMag().getF().setValue(S);
+        TotVA.getMag().setF(new DataAttribute<>(S));
 
         /*Расчет полной активной мощности*/
         W.getPhsA().getCVal().getMag().setValue(SA * cosPhiA);
         W.getPhsB().getCVal().getMag().setValue(SB * cosPhiB);
         W.getPhsC().getCVal().getMag().setValue(SC * cosPhiC);
-        TotW.getMag().getF().setValue(S * cosPhi);
+        TotW.getMag().setF(new DataAttribute<>(S * cosPhi));
 
         /*Расчет полной реактивной мощность*/
         VAr.getPhsA().getCVal().getMag().setValue(SA * sinPhiA);
         VAr.getPhsB().getCVal().getMag().setValue(SB * sinPhiB);
         VAr.getPhsC().getCVal().getMag().setValue(SC * sinPhiC);
-        TotVAr.getMag().getF().setValue(S * sinPhi);
+        TotVAr.getMag().setF(new DataAttribute<>(S * sinPhi));
 
         /*-----------------------------------------------ЛР№3--------------------------------------------------------*/
         /*расчет линейных напряжений*/

@@ -46,22 +46,22 @@ public class RDIR_PDIS extends LN {
         System.out.println(Aang+" "+Bang+" "+Cang);
 
         Dir.getDirPhsA().setValue(
-                Aang < MaxFwdAng.getSetMag().getF().getValue() &&
-                Aang > MinFwdAng.getSetMag().getF().getValue() ?
+                Aang < MaxFwdAng.getSetMag().getValue() &&
+                Aang > MinFwdAng.getSetMag().getValue() ?
                         Direction.BACKWARD : Direction.FORWARD); /*Сопротивление по фазе A входит в защищаемую зону*/
         Dir.getDirPhsB().setValue(
-                Bang < MaxFwdAng.getSetMag().getF().getValue() &&
-                Bang > MinFwdAng.getSetMag().getF().getValue() ?
+                Bang < MaxFwdAng.getSetMag().getValue() &&
+                Bang > MinFwdAng.getSetMag().getValue() ?
                         Direction.BACKWARD : Direction.FORWARD);/*Сопротивление по фазе B входит в защищаемую зону*/
         Dir.getDirPhsC().setValue(
-                Cang < MaxFwdAng.getSetMag().getF().getValue() &&
-                Cang > MinFwdAng.getSetMag().getF().getValue() ?
+                Cang < MaxFwdAng.getSetMag().getValue() &&
+                Cang > MinFwdAng.getSetMag().getValue() ?
                         Direction.BACKWARD : Direction.FORWARD);/*Сопротивление по фазе C входит в защищаемую зону*/
     }
 
     public void setArea(float leftAng, float rightAng) {
-        MinFwdAng.getSetMag().setF(new DataAttribute<>(rightAng));
-        MaxFwdAng.getSetMag().setF(new DataAttribute<>(leftAng));
+        MinFwdAng.getSetMag().setValue(rightAng);
+        MaxFwdAng.getSetMag().setValue(leftAng);
     }
     // ================================================ Не используемые ================================================
     /**

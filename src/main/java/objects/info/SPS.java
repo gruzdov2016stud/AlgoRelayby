@@ -17,7 +17,10 @@ public class SPS extends Data {
         todo состояние
     */
     /**Значение состояния данных */
-    private DataAttribute<Boolean> stVal = new DataAttribute<>(false);
+    private DataAttribute<Boolean> stValPhA = new DataAttribute<>(false);
+    private DataAttribute<Boolean> stValPhB = new DataAttribute<>(false);
+    private DataAttribute<Boolean> stValPhC = new DataAttribute<>(false);
+    private DataAttribute<Boolean> stValPhGeneral = new DataAttribute<>(false);
     /**Качество атрибута(ов), представляющего значение данных.*/
     private Quality q = new Quality();
     /**Timestamp последнего изменения является одним из атрибутов, представляющим

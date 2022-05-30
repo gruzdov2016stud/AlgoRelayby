@@ -74,7 +74,7 @@ public class lab2 {
         ptoc1.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc1.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc1.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc1.getStrVal().getSetMag().getF().setValue(453f);;// выбор уставки 1 кА 453f
+        ptoc1.getStrVal().getSetMag().setValue(453f);;// выбор уставки 1 кА 453f
         ptoc1.getOpDLTmms().getSetVal().setValue(0); // выбор выдержки по времени
         ptoc1.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
         ptoc1.setDir(rdir.getDir()); // передача направления мощности
@@ -87,7 +87,7 @@ public class lab2 {
         ptoc2.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc2.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc2.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc2.getStrVal().getSetMag().getF().setValue(418f);;// выбор уставки 1 кА
+        ptoc2.getStrVal().getSetMag().setValue(418f);;// выбор уставки 1 кА
         ptoc2.getOpDLTmms().getSetVal().setValue(100); // выбор выдержки по времени
         ptoc2.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
         ptoc2.setDir(rdir.getDir()); // передача направления мощности
@@ -100,7 +100,7 @@ public class lab2 {
         ptoc3.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc3.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc3.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc3.getStrVal().getSetMag().getF().setValue(383f);;// выбор уставки 1 кА
+        ptoc3.getStrVal().getSetMag().setValue(383f);;// выбор уставки 1 кА
         ptoc3.getOpDLTmms().getSetVal().setValue(200); // выбор выдержки по времени
         ptoc3.getDirMod().getSetVal().setValue(1); // выбор направленной защиты
         ptoc3.setDir(rdir.getDir()); // передача направления мощности
@@ -113,7 +113,7 @@ public class lab2 {
         ptoc1NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc1NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc1NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc1NE.getStrVal().getSetMag().getF().setValue(453f);;// выбор уставки 1 кА
+        ptoc1NE.getStrVal().getSetMag().setValue(453f);;// выбор уставки 1 кА
         ptoc1NE.getOpDLTmms().getSetVal().setValue(0); // выбор выдержки по времени
         ptoc1NE.getDirMod().getSetVal().setValue(0); // выбор ненаправленная защиты
 
@@ -124,7 +124,7 @@ public class lab2 {
         ptoc2NE.getA().setPhsA(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы A
         ptoc2NE.getA().setPhsB(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы B
         ptoc2NE.getA().setPhsC(msqi.getSeqA().getС3());// присвоение тока нулевой последовательности фазы C
-        ptoc2NE.getStrVal().getSetMag().getF().setValue(418f);;// выбор уставки 1 кА
+        ptoc2NE.getStrVal().getSetMag().setValue(418f);;// выбор уставки 1 кА
         ptoc2NE.getOpDLTmms().getSetVal().setValue(200); // выбор выдержки по времени
         ptoc2NE.getDirMod().getSetVal().setValue(0); // выбор направленной защиты
 
@@ -161,7 +161,7 @@ public class lab2 {
 
         //симметрич составляющие
         nhmi1.addSignals(new NHMISignal("I0", msqi.getSeqA().getС3().getCVal().getMag()),
-                new NHMISignal("Уставка", ptoc1.getStrVal().getSetMag().getF()));
+                new NHMISignal("Уставка", ptoc1.getStrVal().getSetMag()));
         // Направление мощности
         nhmi1.addSignals(new NHMISignal("Направ А", rdir.getDir().getPhsA()));
         nhmi1.addSignals(new NHMISignal("Направ B", rdir.getDir().getPhsB()));

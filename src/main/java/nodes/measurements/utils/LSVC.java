@@ -3,6 +3,7 @@ package nodes.measurements.utils;
 import lombok.Getter;
 import lombok.Setter;
 import nodes.common.LN;
+import objects.data.DataAttribute;
 import objects.measured.SAV;
 
 import java.io.BufferedReader;
@@ -75,12 +76,8 @@ public class LSVC extends LN {
                 if(s < aBuffer.size())
                     value = value * aBuffer.get(s) + bBuffer.get(s);
                 SAV sav = signals.get(s);
-                sav.getInstMag().getF().setValue(value * 1000);
+                sav.getInstMag().getF().setValue(value);
             }
-
-
-
-
         }
     }
 

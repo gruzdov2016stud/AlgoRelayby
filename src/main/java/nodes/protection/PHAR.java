@@ -47,7 +47,7 @@ public class PHAR extends LN {
 
     @Override
     public void process() {
-        /* Блокировка по 5 гармонике */
+        /* Блокировка по 2 гармонике */
         for (HWYE w : hInputs) {
             if (!BlkOp.getStValPhA().getValue()) {
                 BlkOp.getStValPhA().setValue(
@@ -67,7 +67,7 @@ public class PHAR extends LN {
                                 > StrBlock.getSetMag().getValue());
             } else BlkOp.getStValPhC().setValue(false);
 
-            if(BlkOp.getStValPhA().getValue()||BlkOp.getStValPhB().getValue()||BlkOp.getStValPhC().getValue())
+            if(BlkOp.getStValPhA().getValue() || BlkOp.getStValPhB().getValue() || BlkOp.getStValPhC().getValue())
                 BlkOp.getStValPhGeneral().setValue(true);
         }
     }

@@ -4,29 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="Защита ДЗ работает верно + были реализованы все узлы для ДЗТ. Но работает на данный момент некорректно. Следует исправить Тормозную характеристику. Разобраться в вычисление диф I. И затем исследовать логику работы.">
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ДЗТ работает верно.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MHAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MHAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MMXU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/RMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/RMXU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/filter/Fourier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/filter/Fourier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/Colebs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/ObertkaSin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTRC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PTRC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIF/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIF/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MMXU.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/filter/Fourier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/filter/Fourier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nodes/switchgear/XCBR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/switchgear/XCBR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/objects/data/typeData/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/data/typeData/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/objects/info/SPS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/info/SPS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/objects/task/ASG.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/task/ASG.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/process/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/process/main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +186,8 @@
       <workItem from="1653377520957" duration="7507000" />
       <workItem from="1653759263783" duration="2018000" />
       <workItem from="1653806068700" duration="17978000" />
-      <workItem from="1653889154074" duration="36950000" />
+      <workItem from="1653889154074" duration="38521000" />
+      <workItem from="1653968206628" duration="6566000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -277,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653897399703</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="ДЗТ работает верно. Осталось отрегулировать уставки.">
+      <created>1653941993357</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653941993357</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +376,9 @@
     <MESSAGE value="Защита ДЗ работает верно. Кроме годографа." />
     <MESSAGE value="Защита ДЗ работает верно + были реализованы все узлы для ДЗТ. Но работает на данный момент некорректно. Следует исправить Тормозную характеристику. Разобраться в вычислением диф I. И затем исследвоать логику работы." />
     <MESSAGE value="Защита ДЗ работает верно + были реализованы все узлы для ДЗТ. Но работает на данный момент некорректно. Следует исправить Тормозную характеристику. Разобраться в вычисление диф I. И затем исследовать логику работы." />
-    <option name="LAST_COMMIT_MESSAGE" value="Защита ДЗ работает верно + были реализованы все узлы для ДЗТ. Но работает на данный момент некорректно. Следует исправить Тормозную характеристику. Разобраться в вычисление диф I. И затем исследовать логику работы." />
+    <MESSAGE value="ДЗТ работает верно. Осталось отрегулировать уставки." />
+    <MESSAGE value="ДЗТ работает верно." />
+    <option name="LAST_COMMIT_MESSAGE" value="ДЗТ работает верно." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

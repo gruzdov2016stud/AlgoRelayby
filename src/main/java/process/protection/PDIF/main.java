@@ -25,13 +25,13 @@ public class main {
 //----------------------------------------------------todo Узел LSVC lsvc---------------------------------------------//
         LSVC lsvc = new LSVC();
         /*Включение*/
-//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVkl";
+//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVkl"; // Блокруется при уставки 0,1
         /*Внешнее ABC*/
 //        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVneshABC";
         /*Внутренне A,B,BC*/
-        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA";
+//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA";
 //        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutB";
-//        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutBC";
+        String path = "src/main/resources/DPT/Trans2Obm/Trans2ObmVnutBC"; // Блокруется при уставки 0,1 ДЗТ, ДТО отработает
         lsvc.readComtrade(path);
         logicalNodes.add(lsvc);
 //----------------------------------------------------todo Узел MMXU mmxu---------------------------------------------//
@@ -63,7 +63,7 @@ public class main {
         rmxu.getInputs().add(mmxu2.getA());
         logicalNodes.add(rmxu);
 //----------------------------------------------------todo Узел RMXU rmxu---------------------------------------------//
-        PHAR phar = new PHAR(-0.1);
+        PHAR phar = new PHAR(0.1);// при 100 не сработает
         phar.getHInputs().add(mhai1.getHA());
         phar.getHInputs().add(mhai2.getHA());
         logicalNodes.add(phar);
@@ -75,14 +75,11 @@ public class main {
 //----------------------------------------------------todo Узел PDIF pdif--------------------------------------------//
         /**Дифференциальной защиты трансформатора*/
         PDIF pdif = new PDIF(100,
-//                0, 0.5,
-//                          1, 0.5,
-//                          2.5, 1.2,
-//                          5, 2.5);
-                0, 5,
-                        10, 5,
-                        25, 12,
-                        50, 25);
+                        0, 0.5,
+                                  1, 0.5,
+                                5.0, 2.5,
+                                  10,5 );
+
         pdif.setDifACIc(rmxu.getDifACIc());
         pdif.setBlkOp(phar.getBlkOp());
         pdif.calc();
@@ -110,24 +107,25 @@ public class main {
 //----------------------------------------------------todo Узел NHMI nhmi---------------------------------------------//
         NHMI nhmi1 = new NHMI();
         logicalNodes.add(nhmi1);
-        nhmi1.addSignals(new NHMISignal("IaVn(t)", lsvc.getSignals().get(0).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("IaNn(t)", lsvc.getSignals().get(3).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("FurIaVn", mmxu1.getA().getPhsA().getCVal().getMag()));
-        nhmi1.addSignals(new NHMISignal("FurIaNn", mmxu2.getA().getPhsA().getCVal().getMag()));
-        nhmi1.addSignals(new NHMISignal("IaVn1", mhai1.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по вн
-        nhmi1.addSignals(new NHMISignal("IaVn2", mhai1.getHA().getPhsAHar().get(2).getMag()));
-        nhmi1.addSignals(new NHMISignal("IaNn1", mhai2.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по нн
-        nhmi1.addSignals(new NHMISignal("IaNn2", mhai2.getHA().getPhsAHar().get(2).getMag()));
-        NHMI nhmi3 = new NHMI();
-        logicalNodes.add(nhmi3);
-        nhmi3.addSignals("ВН",
+        nhmi1.addSignals("ВН",
                 new NHMISignal("IAвн", lsvc.getSignals().get(0).getInstMag().getF()),
                 new NHMISignal("IBвн", lsvc.getSignals().get(1).getInstMag().getF()),
                 new NHMISignal("ICвн", lsvc.getSignals().get(2).getInstMag().getF()));
-        nhmi3.addSignals("НН",
+        nhmi1.addSignals("НН",
                 new NHMISignal("IAнн", lsvc.getSignals().get(3).getInstMag().getF()),
                 new NHMISignal("IBнн", lsvc.getSignals().get(4).getInstMag().getF()),
                 new NHMISignal("ICнн", lsvc.getSignals().get(5).getInstMag().getF()));
+        nhmi1.addSignals(new NHMISignal("Действующее значение ВН", mmxu1.getA().getPhsA().getCVal().getMag()));
+        nhmi1.addSignals(new NHMISignal("Действующее значение НН", mmxu2.getA().getPhsA().getCVal().getMag()));
+        nhmi1.addSignals(new NHMISignal("IaVn1", mhai1.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по вн
+        nhmi1.addSignals(
+                new NHMISignal("IaVn5phA", mhai1.getHA().getPhsAHar().get(5).getMag()),
+                new NHMISignal("IaVn5phB", mhai1.getHA().getPhsBHar().get(5).getMag()),
+                new NHMISignal("IaVn5phC", mhai1.getHA().getPhsCHar().get(5).getMag()),
+                new NHMISignal("SrtValBlock", phar.getStrBlock().getSetMag()));
+        nhmi1.addSignals(new NHMISignal("IaNn1", mhai2.getHA().getPhsAHar().get(1).getMag())); //первая гармоника по нн
+        nhmi1.addSignals(new NHMISignal("IaNn5", mhai2.getHA().getPhsAHar().get(5).getMag()),
+                new NHMISignal("SrtValBlock", phar.getStrBlock().getSetMag()));
 
         NHMI nhmi2 = new NHMI();
         logicalNodes.add(nhmi2);

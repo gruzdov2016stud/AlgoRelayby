@@ -54,7 +54,7 @@ public class MHAI extends LN {
             int harmoS = harmonicS[i];
             this.harmonics.add(harmoS);
         }
-        for(int h= 0; h < 10; h++){
+        for(int h= 0; h < 6; h++){
             fIaList.add(new Fourier(h));
             fIbList.add(new Fourier(h));
             fIcList.add(new Fourier(h));

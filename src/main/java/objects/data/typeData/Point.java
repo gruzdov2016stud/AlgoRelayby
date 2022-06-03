@@ -20,9 +20,9 @@ public class Point {
 
     public Point(){}
 
-    public Point(Float x, Float y) {
-        xVal.setValue(x);
-        yVal.setValue(y);
+    public Point(double x, double y) {
+        xVal.setValue((float) x);
+        yVal.setValue((float) y);
     }
 
 }

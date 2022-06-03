@@ -72,46 +72,6 @@ public class MSQI extends LN {
 
 
     }
-//        /*Поворачиваем вектора согласно формуле нахождения todo ПП*/
-//        vectorB.setValue(value.getPhsB().getInstCVal().getMag().getValue(), value.getPhsB().getInstCVal().getAng().getValue() + angelW);
-//        vectorC.setValue(value.getPhsC().getInstCVal().getMag().getValue(), value.getPhsC().getInstCVal().getAng().getValue() - angelW);
-//        /*Запишем значение прямой последовательности*/
-//        /*Проекция на ось x*/
-//        Seq.getС1().getInstCVal().getOrtX().setValue(
-//                (value.getPhsA().getInstCVal().getOrtX().getValue()+vectorB.getOrtX().getValue()+vectorC.getOrtX().getValue())/3);
-//        /*Проекция на ось y*/
-//        Seq.getС1().getInstCVal().getOrtY().setValue(
-//                (value.getPhsA().getInstCVal().getOrtY().getValue()+vectorB.getOrtY().getValue()+vectorC.getOrtY().getValue())/3);
-//        /*sqrt(x*x+y*y)*/
-//        Seq.getС1().getInstCVal().getMag().setValue((float)Math.sqrt(
-//                Seq.getС1().getInstCVal().getOrtX().getValue() * Seq.getС1().getInstCVal().getOrtX().getValue()+
-//                        Seq.getС1().getInstCVal().getOrtY().getValue() * Seq.getС1().getInstCVal().getOrtY().getValue()));
-//
-//        /*Поворачиваем вектора согласно формуле нахождения todo ОП*/
-//        vectorB.setValue(value.getPhsB().getInstCVal().getMag().getValue(), value.getPhsB().getInstCVal().getAng().getValue() - angelW);
-//        vectorC.setValue(value.getPhsC().getInstCVal().getMag().getValue(), value.getPhsC().getInstCVal().getAng().getValue() + angelW);
-//        /*Запишем значение ОП*/
-//        Seq.getС2().getInstCVal().getOrtX().setValue(
-//                (value.getPhsA().getInstCVal().getOrtX().getValue()+vectorB.getOrtX().getValue()+vectorC.getOrtX().getValue())/3);
-//        Seq.getС2().getInstCVal().getOrtY().setValue(
-//                (value.getPhsA().getInstCVal().getOrtY().getValue()+vectorB.getOrtY().getValue()+vectorC.getOrtY().getValue())/3);
-//        Seq.getС2().getInstCVal().getMag().setValue((float)Math.sqrt(
-//                Seq.getС2().getInstCVal().getOrtX().getValue()* Seq.getС2().getInstCVal().getOrtX().getValue()+
-//                        Seq.getС2().getInstCVal().getOrtY().getValue()* Seq.getС2().getInstCVal().getOrtY().getValue()));
-//
-//        /*Поворачиваем вектора согласно формуле нахождения todo НП*/
-//        vectorB.setValue(value.getPhsB().getInstCVal().getMag().getValue(), value.getPhsB().getInstCVal().getAng().getValue());
-//        vectorC.setValue(value.getPhsC().getInstCVal().getMag().getValue(), value.getPhsC().getInstCVal().getAng().getValue());
-//        /*Запишем значение НП*/
-//        Seq.getС3().getInstCVal().getOrtX().setValue(
-//                (value.getPhsA().getInstCVal().getOrtX().getValue()+vectorB.getOrtX().getValue()+vectorC.getOrtX().getValue())/3);
-//        Seq.getС3().getInstCVal().getOrtY().setValue(
-//                (value.getPhsA().getInstCVal().getOrtY().getValue()+vectorB.getOrtY().getValue()+vectorC.getOrtY().getValue())/3);
-//        Seq.getС3().getInstCVal().getMag().setValue((float)Math.sqrt(
-//                Seq.getС3().getInstCVal().getOrtX().getValue()* Seq.getС3().getInstCVal().getOrtX().getValue()+
-//                        Seq.getС3().getInstCVal().getOrtY().getValue()* Seq.getС3().getInstCVal().getOrtY().getValue()));
-
-
     // ================================================ Не используемые ================================================
     /**
      * DQ0 последовательность

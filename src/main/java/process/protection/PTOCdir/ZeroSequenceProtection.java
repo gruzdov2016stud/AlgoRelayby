@@ -6,7 +6,7 @@ import nodes.gui.NHMI;
 import nodes.gui.other.NHMISignal;
 import nodes.measurements.MMXU;
 import nodes.measurements.MSQI;
-import nodes.protection.PTOC;
+import nodes.registration.protection.PTOC;
 import nodes.measurements.utils.LSVC;
 import nodes.measurements.utils.ParseQuality;
 import nodes.registration.RDIR;
@@ -143,11 +143,11 @@ public class ZeroSequenceProtection {
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);
-        cswi.setOpOpn1(ptoc1.getOp());
-        cswi.setOpOpn2(ptoc2.getOp());
-        cswi.setOpOpn3(ptoc3.getOp());
-        cswi.setOpOpn4(ptoc1NE.getOp());
-        cswi.setOpOpn5(ptoc2NE.getOp());
+//        cswi.setOpOpn1(ptoc1.getOp());
+//        cswi.setOpOpn2(ptoc2.getOp());
+//        cswi.setOpOpn3(ptoc3.getOp());
+//        cswi.setOpOpn4(ptoc1NE.getOp());
+//        cswi.setOpOpn5(ptoc2NE.getOp());
         cswi.getPos().getCtIVal().setValue(true); // присвоение начальной команды на отключение
         cswi.getPos().getStVal().setValue(StVal.ON);// присвоение начального положения выключателя
 

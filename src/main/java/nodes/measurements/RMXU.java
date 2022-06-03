@@ -31,74 +31,71 @@ public class RMXU extends LN {
     private WYE DifACIc = new WYE();
     /**Ток торможения */
     private WYE RstA = new WYE();
-    /**Ток небаланса */
-    private WYE ImbCur = new WYE();
     ///////////////////////////////////////////////////////////////////////////
     // todo Реализация узла
     ///////////////////////////////////////////////////////////////////////////
     /** Входные сигналы */
-    private ArrayList<WYE> inputs = new ArrayList<>();
+    private ArrayList<WYE> inputsA = new ArrayList<>();
     /** Временный вектор для хранения промежуточного значения для тормазного тока*/
     private Vector rstCurrent = new Vector();
+    private Vector Idifa = new Vector();
+    private Vector Idifb = new Vector();
+    private Vector Idifc = new Vector();
+
     double St = 500*(Math.pow(10,3));
     ArrayList<Float> U = new ArrayList<>();
     ArrayList<Float> Kt = new ArrayList<>();
     ArrayList<Float> basis = new ArrayList<>();
 
     /** Общий случай*/
+    public RMXU(double Ibasis) {
+        for (int j = 0; j != 2; j++) {
+            basis.add((float) Ibasis);
+        }
+    }
+
     public RMXU() {
         U.add(500F);
         U.add(10F);
         Kt.add(160F);
         Kt.add(8000F);
-    }
-    /**
-     * @param aloc ...aloc_n - Токи измерителя на концах линии из MMXU
-     */
-    public RMXU(WYE...aloc) {
-        U.add(500F);
-        U.add(10F);
-        Kt.add(160F);
-        Kt.add(8000F);
-        // Расчитать базисный токи ВН и ННArray float
-        for(int i = 0; i < inputs.size(); i++) {
-            this.inputs.add(aloc[i]);
+        for (int j = 0; j != 2; j++) {
+            basis.add((float) (St / (U.get(j) * Kt.get(j) * Math.sqrt(3))));
         }
     }
 
     @Override
     public void process() {
         for (int j = 0; j != 2; j++) {
-            basis.add((float) (St / (U.get(j)* Kt.get( j)*Math.sqrt(3))));
-            for(WYE w: inputs){
-                inputs.get(j).getPhsA().getCVal().getMag().setValue(
-                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+            for(WYE w: inputsA){
+                inputsA.get(j).getPhsA().getCVal().getMag().setValue(
+                        inputsA.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
                 );
-                inputs.get(j).getPhsB().getCVal().getMag().setValue(
-                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+                inputsA.get(j).getPhsB().getCVal().getMag().setValue(
+                        inputsA.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
                 );
-                inputs.get(j).getPhsC().getCVal().getMag().setValue(
-                        inputs.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
+                inputsA.get(j).getPhsC().getCVal().getMag().setValue(
+                        inputsA.get(j).getPhsA().getCVal().getMag().getValue()/basis.get(j)
                 );
             }
         }
 
-        float dAx = 0, dAy = 0;
-        float dBx = 0, dBy = 0;
-        float dCx = 0, dCy = 0;
+
         /*Обнулим начальный вектор тормозного тока*/
         rstCurrent.setValueO(0, 0);
+        for (WYE Aloc : inputsA) {
 
-        for (WYE Aloc : inputs) {
             /*Суммирование векторов по осям для каждой фазы*/
-            dAx += Aloc.getPhsA().getCVal().getOrtX().getValue();
-            dAy += Aloc.getPhsA().getCVal().getOrtY().getValue();
+            Idifa.Slozhenie(inputsA.get(0).getPhsA().getCVal(), inputsA.get(1).getPhsA().getCVal());
+            Idifa.setValueO(Idifa.getOrtX().getValue(),Idifa.getOrtY().getValue());
 
-            dBx += Aloc.getPhsB().getCVal().getOrtX().getValue();
-            dBy += Aloc.getPhsB().getCVal().getOrtY().getValue();
+            Idifb.Slozhenie(inputsA.get(0).getPhsB().getCVal(), inputsA.get(1).getPhsB().getCVal());
+            Idifb.setValueO(Idifb.getOrtX().getValue(),Idifb.getOrtY().getValue());
 
-            dCx += Aloc.getPhsC().getCVal().getOrtX().getValue();
-            dCy += Aloc.getPhsC().getCVal().getOrtY().getValue();
+            Idifc.Slozhenie(inputsA.get(0).getPhsC().getCVal(), inputsA.get(1).getPhsC().getCVal());
+            Idifc.setValueO(Idifc.getOrtX().getValue(),Idifc.getOrtY().getValue());
+
+
             /*Поиск максимального значения тормозного тока */
             if (Aloc.getPhsA().getCVal().getMag().getValue() > rstCurrent.getMag().getValue()) {
                 rstCurrent.setValueO(Aloc.getPhsA().getCVal().getOrtX().getValue(), Aloc.getPhsA().getCVal().getOrtY().getValue());
@@ -111,9 +108,10 @@ public class RMXU extends LN {
             }
         }
         /** Расчёт значений по-фазно*/
-        DifACIc.getPhsA().getCVal().setValueO(dAx, dAy);
-        DifACIc.getPhsB().getCVal().setValueO(dBx, dBy);
-        DifACIc.getPhsC().getCVal().setValueO(dCx, dCy);
+        DifACIc.getPhsA().setCVal(Idifa);
+        DifACIc.getPhsB().setCVal(Idifb);
+        DifACIc.getPhsC().setCVal(Idifc);
+
         RstA.getPhsA().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
         RstA.getPhsB().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());
         RstA.getPhsC().getCVal().setValueO(rstCurrent.getOrtX().getValue(), rstCurrent.getOrtY().getValue());

@@ -5,7 +5,7 @@ import objects.measured.SAV;
 
 public class Fourier extends Filter {
     /*Количество снятий сигнала за период*/
-    private int size = 20;
+    private int size = 60;
     /*Шаг дискретизации*/
     private double delta_t = 2 * Math.PI/size;
     /*Коэффициент фильтра фурье*/

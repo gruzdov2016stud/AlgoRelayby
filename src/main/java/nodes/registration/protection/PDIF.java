@@ -1,4 +1,4 @@
-package nodes.protection;
+package nodes.registration.protection;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,14 +33,10 @@ public class PDIF extends LN {
     private Vector RstCurrent = new Vector();
     /** Направляет Динамические характеристики графика*/
     private CSD TmASt = new CSD();
-    /**Блокировка зависимых функций защиты */
-    private SPS BlkOp = new SPS();
-    /**Блокировка зависимых функций защиты по фазно*/
-    private SPS BlkOpA = new SPS();
-    private SPS BlkOpB = new SPS();
-    private SPS BlkOpC = new SPS();
-    /**Ток небаланса */
-    private WYE ImbCur = new WYE();
+    /**Блокировка зависимых функций защиты по гармонике */
+    private SPS BlkOpPHAR = new SPS();
+    /**Блокировка при неисправности токовых цепей */
+    private SPS BlkOpSCTR = new SPS();
     /** Минимальное время срабатывания Элемент данных Minimum Operating Time (минимальное время действия в мс) логического узла используется для координирования работы с более старыми электромеханическими реле*/
     private ING MinOpTmms = new ING();
     ///////////////////////////////////////////////////////////////////////////
@@ -51,7 +47,7 @@ public class PDIF extends LN {
     ///////////////////////////////////////////////////////////////////////////
     // todo Реализация узла
     ///////////////////////////////////////////////////////////////////////////
-    private WYE TripPoint = new WYE();
+    private WYE StrRst = new WYE();
     /**Срабатывание (атрибут ACD класса общих данных) означает, что обнаружено нарушение или недопустимое состояние. Элемент Str может включать в себя информацию о фазе и направлении*/
     private ACD Str = new ACD();
     /** Счетчик времени после пуска реле защиты */
@@ -59,15 +55,17 @@ public class PDIF extends LN {
     /** Для построения тормозной характеристики*/
     private float dif0 = 0;
     /** угол наклона характеристики в зоне тормажения */
-    private float k = 0;
+    private float kT1;
     /** Тормозная точка */
     private float rst0 = 0;
+    private float rst1 = 0;
     private float x0 = 0, y0 = 0;
     /**
      * @param Itorm_Idiff x и у - координаты для задания формы кривой по Х и У координаты для для задания формы кривой по
      * @param DlTmms - Минимальное время срабатывания
      */
-    public PDIF(int DlTmms, double... Itorm_Idiff) {
+    public PDIF(int DlTmms, double kt1, double... Itorm_Idiff) {
+        this.kT1 = (float) kt1;
         MinOpTmms.getSetVal().setValue(DlTmms);
         for(int i = 0; i < Itorm_Idiff.length; i += 2) {
             this.x0 = (float) Itorm_Idiff[i];
@@ -76,27 +74,33 @@ public class PDIF extends LN {
         }
     }
     /*расчет значений для характеристики*/
-    public void calc(){
-        dif0 = TmASt.getCrvPts().get(1).getYVal().getValue(); //1 - у нулевой и у первой точки значение "y" одинаково
+    public void init(){
+        dif0 = TmASt.getCrvPts().get(1).getYVal().getValue();
         rst0 = TmASt.getCrvPts().get(1).getXVal().getValue();
-        k = (TmASt.getCrvPts().get(2).getYVal().getValue() - TmASt.getCrvPts().get(1).getYVal().getValue()) /
-                (TmASt.getCrvPts().get(2).getXVal().getValue() - TmASt.getCrvPts().get(1).getXVal().getValue());
+        rst1 = TmASt.getCrvPts().get(2).getXVal().getValue();
+//        kT1 = (TmASt.getCrvPts().get(2).getYVal().getValue() - TmASt.getCrvPts().get(1).getYVal().getValue()) /
+//                (TmASt.getCrvPts().get(2).getXVal().getValue() - TmASt.getCrvPts().get(1).getXVal().getValue());
     }
     @Override
     public void process() {
         if (RstCurrent.getMag().getValue() < rst0) {
-            TripPoint.getPhsA().getCVal().setValue(dif0, 0);
-            TripPoint.getPhsB().getCVal().setValue(dif0, 0);
-            TripPoint.getPhsC().getCVal().setValue(dif0, 0);
+            StrRst.getPhsA().getCVal().setValue(RstCurrent.getMag().getValue(), 0);
+            StrRst.getPhsB().getCVal().setValue(RstCurrent.getMag().getValue(), 0);
+            StrRst.getPhsC().getCVal().setValue(RstCurrent.getMag().getValue(), 0);
+        } else if(RstCurrent.getMag().getValue() >= rst0 && RstCurrent.getMag().getValue() < rst1){
+            StrRst.getPhsA().getCVal().setValue(dif0, 0);
+            StrRst.getPhsB().getCVal().setValue(dif0, 0);
+            StrRst.getPhsC().getCVal().setValue(dif0, 0);
         } else {
-            TripPoint.getPhsA().getCVal().setValue(RstCurrent.getMag().getValue() * k, 0);
-            TripPoint.getPhsB().getCVal().setValue(RstCurrent.getMag().getValue() * k, 0);
-            TripPoint.getPhsC().getCVal().setValue(RstCurrent.getMag().getValue() * k, 0);
+            StrRst.getPhsA().getCVal().setValue(RstCurrent.getMag().getValue() * kT1, 0);
+            StrRst.getPhsB().getCVal().setValue(RstCurrent.getMag().getValue() * kT1, 0);
+            StrRst.getPhsC().getCVal().setValue(RstCurrent.getMag().getValue() * kT1, 0);
         }
+
         /**Проверка уставки*/
-        boolean phsA = DifACIc.getPhsA().getCVal().getMag().getValue() > TripPoint.getPhsA().getCVal().getMag().getValue();
-        boolean phsB = DifACIc.getPhsB().getCVal().getMag().getValue() > TripPoint.getPhsB().getCVal().getMag().getValue();
-        boolean phsC = DifACIc.getPhsC().getCVal().getMag().getValue() > TripPoint.getPhsC().getCVal().getMag().getValue();
+        boolean phsA = DifACIc.getPhsA().getCVal().getMag().getValue() > StrRst.getPhsA().getCVal().getMag().getValue();
+        boolean phsB = DifACIc.getPhsB().getCVal().getMag().getValue() > StrRst.getPhsB().getCVal().getMag().getValue();
+        boolean phsC = DifACIc.getPhsC().getCVal().getMag().getValue() > StrRst.getPhsC().getCVal().getMag().getValue();
         boolean general = phsA || phsB || phsC;
 
         /**Инициализация Пуска на Срабатывание (обнаружено нарушение или недопустимое состояние) */
@@ -109,12 +113,16 @@ public class PDIF extends LN {
         if (Str.getPhsB().getValue()) breakerTimeB ++; else breakerTimeB = 0;
         if (Str.getPhsC().getValue()) breakerTimeC ++; else breakerTimeC = 0;
 
-        /** Сброс выдержки, если блокировка */
-        if(BlkOp.getStValPhGeneral().getValue()){
-            breakerTimeA = 0;
-            breakerTimeB = 0;
-            breakerTimeC = 0;
-        }
+        /** Сброс выдержки, если блокировка по гармоническим составляющим*/
+        if(BlkOpPHAR.getStValPhA().getValue())breakerTimeA = 0;
+        if(BlkOpPHAR.getStValPhB().getValue())breakerTimeB = 0;
+        if(BlkOpPHAR.getStValPhC().getValue())breakerTimeC = 0;
+
+        /** Сброс выдержки, если блокировка при неисправности токовых цепей*/
+        if(BlkOpSCTR.getStValPhA().getValue())breakerTimeA = 0;
+        if(BlkOpSCTR.getStValPhB().getValue())breakerTimeB = 0;
+        if(BlkOpSCTR.getStValPhC().getValue())breakerTimeC = 0;
+
         /**Инициализация Пуска на отключение (решение защиты об отключении) при превышении уставки по времени*/
         if (breakerTimeA > MinOpTmms.getSetVal().getValue()) Op.getPhsA().setValue(true);
         if (breakerTimeB > MinOpTmms.getSetVal().getValue()) Op.getPhsB().setValue(true);
@@ -155,6 +163,8 @@ public class PDIF extends LN {
      * кривые, приведены в определении графика класса общих данных (CDC)
      */
     private CURVE TmACrv = new CURVE();
+    /**Ток небаланса */
+    private WYE ImbCur = new WYE();
 
 
 

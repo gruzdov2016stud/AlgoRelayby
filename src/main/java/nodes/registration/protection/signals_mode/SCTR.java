@@ -1,4 +1,4 @@
-package nodes.controls.signals_mode;
+package nodes.registration.protection.signals_mode;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -43,12 +43,10 @@ public class SCTR extends LN {
     // todo Реализация узла
     ///////////////////////////////////////////////////////////////////////////
     /**
-     * @param difACIc - дифференциальный ток из узла RMXU
      * @param DlTmms -  Выдержка времени для состояния блокировки
      */
-    public SCTR(WYE difACIc, float strVal, int DlTmms) {
-        this.DifACIc = difACIc;
-        this.StrVal.getSetMag().setValue(strVal);
+    public SCTR(double strVal, int DlTmms) {
+        this.StrVal.getSetMag().setValue((float) strVal);
         this.BlkDlTmms.getSetVal().setValue(DlTmms);
         this.BlkOp.getStValPhA().setValue(false);
         this.BlkOp.getStValPhC().setValue(false);

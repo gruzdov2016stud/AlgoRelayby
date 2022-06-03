@@ -1,4 +1,4 @@
-package nodes.protection;
+package nodes.registration.protection;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,20 +26,17 @@ public class PTRC extends LN {
     ///////////////////////////////////////////////////////////////////////////
     /** Пуск на отключение\блокировки всех пришедших сигналов */
     private List<ACT> OpS = new ArrayList<>();
-    /**Пуск на отключение*/
-    private ACT Op= new ACT();
     ///////////////////////////////////////////////////////////////////////////
     // todo Выходные параметры
     ///////////////////////////////////////////////////////////////////////////
     /**Отключение*/
     private ACT Tr = new ACT();
-    /** Сумма всех пусков всех подключенных логических узлов*/
-    private ACD Str = new ACD();
     ///////////////////////////////////////////////////////////////////////////
     // todo Реализация узла
     ///////////////////////////////////////////////////////////////////////////
     private int count = 0;
-    private int countOp = 0;
+    /**Пуск на отключение*/
+    private ACT Op= new ACT();
     /**
      * Объединения сигналов защит для выдачи отключающего воздействия
      * @param OpI Все пуски на отключение
@@ -48,12 +45,7 @@ public class PTRC extends LN {
         for(int i = 0; i < OpI.length; i++) {
             this.Op = OpI[i];
             this.OpS.add(Op);
-            countOp++;
         }
-    }
-
-    public PTRC(int numberOp) {
-        countOp = numberOp;
     }
 
     @Override
@@ -61,13 +53,14 @@ public class PTRC extends LN {
         for (ACT signal : OpS) {
             if(signal.getGeneral().getValue()) count++;
         }
-        if(count == countOp) Tr.getGeneral().setValue(true);
+        if(count == OpS.size()) Tr.getGeneral().setValue(true);
         else Tr.getGeneral().setValue(false);
     }
 
     // ================================================ Не используемые ================================================
-
     // todo Информация об общих логических узлах
+    /** Сумма всех пусков всех подключенных логических узлов*/
+    private ACD Str = new ACD();
     /**
      *Счетчик числа переключений со сбросом
      */

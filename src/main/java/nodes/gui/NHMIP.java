@@ -38,7 +38,7 @@ public class NHMIP extends LN {
 
 	public NHMIP(){
 		JFreeChart jfreechart = ChartFactory.createScatterPlot(
-				"title", "R, Ом", "X, Ом", dataset,
+				"Тормозная характеристика", "Iторм, о.е.", "Iд, о.е.", dataset,
 				PlotOrientation.VERTICAL, true, true, false);
 
 		XYPlot plot = jfreechart.getXYPlot();
@@ -53,7 +53,7 @@ public class NHMIP extends LN {
 		xAxis = (NumberAxis) plot.getRangeAxis();
 		yAxis = (NumberAxis) plot.getDomainAxis();
 
-		JFreeChart chart = new JFreeChart("Сигналы", plot);
+		JFreeChart chart = new JFreeChart("Тормозная характеристика", plot);
 		chart.setBorderPaint(Color.black);
 		chart.setBorderVisible(true);
 		chart.setBackgroundPaint(Color.white);

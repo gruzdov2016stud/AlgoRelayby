@@ -1,4 +1,4 @@
-package nodes.protection;
+package nodes.registration.protection;
 
 import lombok.Getter;
 import lombok.Setter;

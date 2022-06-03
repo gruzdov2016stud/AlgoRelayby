@@ -51,14 +51,14 @@ public class LSVC extends LN {
         iterator = datFileLines.iterator();
 
         /* Извлечение числа сигналов */
-        int analogNumber = Integer.parseInt(cfgFileLines.get(1).split(",")[1].replace("A", ""));
-        int discreteNumber = Integer.parseInt(cfgFileLines.get(1).split(",")[2].replace("D", ""));
+        int analogNumber = Integer.parseInt(cfgFileLines.get(1).trim().split(",")[1].replace("A", ""));
+        int discreteNumber = Integer.parseInt(cfgFileLines.get(1).trim().split(",")[2].replace("D", ""));
         signalNumber = analogNumber + discreteNumber;
 
         /* Извлечение масштабирующих сигналов (для аналоговых сигналов) */
         for (int i=2; i<(2+analogNumber); i++){
             String line = cfgFileLines.get(i);
-            String[] lSplit = line.split(",");
+            String[] lSplit = line.trim().split(",");
             aBuffer.add(Float.parseFloat(lSplit[5]));
             bBuffer.add(Float.parseFloat(lSplit[6]));
         }
@@ -70,7 +70,7 @@ public class LSVC extends LN {
     @Override
     public void process() {
         if(iterator.hasNext()){
-            String[] split = iterator.next().split(",");
+            String[] split = iterator.next().trim().split(",");
             for(int s=0; s < signalNumber; s++){
                 float value = Float.parseFloat(split[s + 2]);
                 if(s < aBuffer.size())

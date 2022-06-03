@@ -4,10 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ДЗТ работает верно.">
+    <list default="true" id="3ceb1231-7eea-46c5-878a-7842704add61" name="Changes" comment="ДЗЛ уставки">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PIOC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/process/protection/DZL/main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ1.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ2.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ2.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ3.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ3.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ4.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ4.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ5.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ5.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ6.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ6.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ7.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/KP/KZ7.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/controls/CSWI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/controls/signals_mode/SCTR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/signals_mode/SCTR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/gui/NHMIP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/gui/NHMIP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MHAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MHAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/MSQI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/RMXU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/RMXU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/filter/Fourier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/filter/Fourier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PDIF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PHAR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTOC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PTOC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nodes/protection/PTRC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nodes/registration/protection/PTRC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/data/typeData/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/data/typeData/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/data/typeData/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/data/typeData/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIF/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIF/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PDIS/main_PDIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/ZeroSequenceProtection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/lab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/process/protection/PTOCdir/lab2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/KzA.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/KzA.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/KzA.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/KzA.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/KzBC.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/KzBC.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/KzBC.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/KzBC.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/Vkl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/Vkl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/4 sections/Vkl.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/4 sections/Vkl.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/KzAB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/KzAB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/KzAB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/KzAB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/KzB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/KzB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/KzB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/KzB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/Vkl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/Vkl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPB/5 sections/Vkl.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPB/5 sections/Vkl.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/Vkl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/Vkl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/Vkl.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/Vkl.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VneshAB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VneshAB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VneshAB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VneshAB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VnutA.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VnutA.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VnutA.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VnutA.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VnutB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VnutB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPR/VnutB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPR/VnutB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVkl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVkl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVkl.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVkl.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVneshABC.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVneshABC.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVneshABC.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVneshABC.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutA.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutA.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutA.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutBC.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutBC.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans2Obm/Trans2ObmVnutBC.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans2Obm/Trans2ObmVnutBC.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVkl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVkl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVkl.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVkl.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVneshABC.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVneshABC.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVneshABC.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVneshABC.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVnutAB.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVnutAB.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVnutAB.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVnutAB.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVnutC.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVnutC.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DPT/Trans3Obm/Trans3ObmVnutC.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LR4/DPT/Trans3Obm/Trans3ObmVnutC.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/controls/CSWI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/gui/NHMIP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/gui/NHMIP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/MSQI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/measurements/filter/Fourier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nodes/measurements/filter/Fourier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nodes/protection/PTOC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objects/data/typeData/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/data/typeData/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objects/data/typeData/Vector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/data/typeData/Vector.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +133,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Programming2022_lr1_PEE/Programming2022_lr1_PEE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/KP" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
@@ -66,34 +144,24 @@
       <recent name="objects.data" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources\KP" />
       <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources" />
       <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\java\LN" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources\KP" />
+      <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources\LR4" />
       <recent name="D:\YandexDisk\Project\AlgoRelayProtection\AlgoRelayby\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="nodes.protection" />
+      <recent name="process.protection.DZL" />
       <recent name="process.protection.PDIF" />
       <recent name="objects.measured" />
       <recent name="nodes.measurements" />
-      <recent name="process.protection.PDIS" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main (2)">
-    <configuration name="MTZ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="process.protection.current.MTZ" />
-      <module name="AlgoRelayby" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="process.protection.PTOCdir.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.main">
     <configuration name="ZeroSequenceProtection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.protection.PTOCdir.ZeroSequenceProtection" />
       <module name="AlgoRelayby" />
@@ -133,6 +201,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="process.protection.DZL.main" />
+      <module name="AlgoRelayby" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="process.protection.DZL.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main_PDIS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="process.protection.PDIS.main_PDIS" />
       <module name="AlgoRelayby" />
@@ -148,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.main" />
         <item itemvalue="Application.main (2)" />
         <item itemvalue="Application.ZeroSequenceProtection" />
         <item itemvalue="Application.main_PDIS" />
         <item itemvalue="Application.main (1)" />
-        <item itemvalue="Application.MTZ" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +268,11 @@
       <workItem from="1653759263783" duration="2018000" />
       <workItem from="1653806068700" duration="17978000" />
       <workItem from="1653889154074" duration="38521000" />
-      <workItem from="1653968206628" duration="6566000" />
+      <workItem from="1653968206628" duration="7197000" />
+      <workItem from="1653977029809" duration="6000" />
+      <workItem from="1654029466015" duration="596000" />
+      <workItem from="1654067539981" duration="31653000" />
+      <workItem from="1654258816290" duration="2704000" />
     </task>
     <task id="LOCAL-00001" summary="ТНЗНП работает неправильно.Этап исправления">
       <created>1653042088254</created>
@@ -266,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653941993357</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ДЗТ работает верно.">
+      <created>1653975055660</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1653975055660</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +470,8 @@
     <MESSAGE value="Защита ДЗ работает верно + были реализованы все узлы для ДЗТ. Но работает на данный момент некорректно. Следует исправить Тормозную характеристику. Разобраться в вычисление диф I. И затем исследовать логику работы." />
     <MESSAGE value="ДЗТ работает верно. Осталось отрегулировать уставки." />
     <MESSAGE value="ДЗТ работает верно." />
-    <option name="LAST_COMMIT_MESSAGE" value="ДЗТ работает верно." />
+    <MESSAGE value="ДЗЛ уставки" />
+    <option name="LAST_COMMIT_MESSAGE" value="ДЗЛ уставки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -393,9 +486,19 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/nodes/protection/PHAR.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/nodes/measurements/utils/LSVC.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -406,13 +509,5 @@
         <PinnedItemInfo parentTag="objects.measured.WYE" memberName="presence" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="BlkOp.stValPhA.value" />
-        <watch expression="BlkOp.stValPhB.value" />
-        <watch expression="BlkOp.stValPhC.value" />
-        <watch expression="BlkOp.stValPhGeneral.value" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

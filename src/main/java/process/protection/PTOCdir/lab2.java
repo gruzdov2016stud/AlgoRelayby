@@ -6,7 +6,7 @@ import nodes.gui.NHMI;
 import nodes.gui.other.NHMISignal;
 import nodes.measurements.MMXU;
 import nodes.measurements.MSQI;
-import nodes.protection.PTOC;
+import nodes.registration.protection.PTOC;
 import nodes.measurements.utils.LSVC;
 import nodes.measurements.utils.ParseQuality;
 import nodes.registration.RDIR;
@@ -131,7 +131,7 @@ public class lab2 {
 //----------------------------------------------------todo Узел CSWI cswi---------------------------------------------//
         CSWI cswi = new CSWI();
         logicalNodes.add(cswi);
-        cswi.setOpOpn1(ptoc1.getOp());
+//        cswi.setOpOpn1(ptoc1.getOp());
         cswi.getPos().getCtIVal().setValue(true); // присвоение начальной команды на отключение
         cswi.getPos().getStVal().setValue(StVal.ON);// присвоение начального положения выключателя
 

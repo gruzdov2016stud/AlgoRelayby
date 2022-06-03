@@ -40,4 +40,11 @@ public class Vector extends Data {
         ang.setValue((float) Math.toDegrees(angRad.getValue()));
     }
 
+    public void Slozhenie(Vector a, Vector b){
+        a.setValue(a.getMag().getValue(),a.getAng().getValue());
+        b.setValue(b.getMag().getValue(),b.getAng().getValue());
+        ortX.setValue(a.getOrtX().getValue() + b.getOrtX().getValue());
+        ortY.setValue(a.getOrtY().getValue() + b.getOrtY().getValue());
+    }
+
 }
